@@ -39,12 +39,12 @@ class GraphFragment : Fragment() {
 
         setChart(binding.chart)
 
-        binding.start.setOnClickListener {
+        binding.startBtn.setOnClickListener {
 //            viewModel.startService(binding.chart.lineData)
 //            passDataInterface.onDataReceived(false)
         }
 
-        binding.stop.setOnClickListener {
+        binding.stopBtn.setOnClickListener {
 //            viewModel.stopService()
 //            passDataInterface.onDataReceived(true)
         }
