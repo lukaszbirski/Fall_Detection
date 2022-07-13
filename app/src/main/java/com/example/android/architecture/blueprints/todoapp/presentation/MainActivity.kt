@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.databinding.LayoutMainBinding
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.HomeFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.SettingsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             .addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
                     R.id.settingsFragment,
-//                    R.id.graphFragment,
+                    R.id.graphFragment,
                     R.id.contactsFragment,
                     R.id.homeFragment -> binding.bottomNav.visibility = View.VISIBLE
                     else -> binding.bottomNav.visibility = View.GONE
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun manageNavigation(item: MenuItem) {
         when (item.itemId) {
             R.id.homeFragment -> navigateToFragment(HomeFragment())
-//            R.id.graphFragment -> navigateToFragment(GraphFragment())
+            R.id.graphFragment -> navigateToFragment(GraphFragment())
             R.id.settingsFragment -> navigateToFragment(SettingsFragment())
             R.id.contactsFragment -> navigateToFragment(ContactsFragment())
         }

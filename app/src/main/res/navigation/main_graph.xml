@@ -16,4 +16,8 @@
         android:id="@+id/contactsFragment"
         android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment"
         android:label="ContactsFragment" />
+    <fragment
+        android:id="@+id/graphFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment"
+        android:label="GraphFragment" />
 </navigation>
