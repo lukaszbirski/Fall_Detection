@@ -8,4 +8,12 @@
         android:id="@+id/homeFragment"
         android:name="com.example.android.architecture.blueprints.todoapp.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.ContactsFragment"
+        android:label="ContactsFragment" />
 </navigation>
