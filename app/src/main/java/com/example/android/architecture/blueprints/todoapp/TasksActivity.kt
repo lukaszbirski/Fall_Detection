@@ -35,7 +35,7 @@ class TasksActivity : AppCompatActivity() {
         navHostFragment.findNavController()
             .addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-//                    R.id.settingsFragment,
+                    R.id.settingsFragment,
 //                    R.id.graphFragment,
                     R.id.contactsFragment,
                     R.id.homeFragment -> binding.bottomNav.visibility = View.VISIBLE
@@ -50,7 +50,7 @@ class TasksActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.homeFragment -> navigateToFragment(HomeFragment())
 //            R.id.graphFragment -> navigateToFragment(GraphFragment())
-//            R.id.settingsFragment -> navigateToFragment(SettingsFragment())
+            R.id.settingsFragment -> navigateToFragment(SettingsFragment())
             R.id.contactsFragment -> navigateToFragment(ContactsFragment())
         }
     }
