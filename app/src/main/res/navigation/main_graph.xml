@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.HomeFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.SettingsFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.ContactsFragment"
+        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment"
         android:label="ContactsFragment" />
 </navigation>

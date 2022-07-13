@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp
+package com.example.android.architecture.blueprints.todoapp.presentation.fragment
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,8 +12,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.databinding.FragmentContactsBinding
 import com.example.android.architecture.blueprints.todoapp.model.Contact
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.adapter.ContactAdapter
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.adapter.ContactAdapterListener
+import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.ContactsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
