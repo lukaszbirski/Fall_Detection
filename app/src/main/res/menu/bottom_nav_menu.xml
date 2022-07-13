@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:title="@string/bottom_navigation_home_text"
+        android:icon="@drawable/ic_baseline_home_24" />
+
+<!--    <item android:id="@+id/graphFragment"-->
+<!--        android:title="@string/bottom_navigation_graph_text"-->
+<!--        android:icon="@drawable/ic_signal_wave_24" />-->
+
+    <item android:id="@+id/contactsFragment"
+        android:title="@string/bottom_navigation_contacts_text"
+        android:icon="@drawable/ic_person_24" />
+
+<!--    <item android:id="@+id/settingsFragment"-->
+<!--        android:title="@string/bottom_navigation_settings_text"-->
+<!--        android:icon="@drawable/ic_baseline_settings_24" />-->
+
+</menu>

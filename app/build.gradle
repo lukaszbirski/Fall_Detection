@@ -87,6 +87,9 @@ android {
     }
 
     testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
         devices {
             pixel2api30atd(com.android.build.api.dsl.ManagedVirtualDevice) {
                 // Use device profiles you typically see in Android Studio
