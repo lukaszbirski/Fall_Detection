@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.android.architecture.blueprints.todoapp.databinding.FragmentMainBinding
+import com.example.android.architecture.blueprints.todoapp.databinding.FragmentContactsBinding
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class ContactsFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentContactsBinding
 
     private val viewModel: TasksViewModel by viewModels()
 
@@ -22,11 +22,7 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-
-        viewModel.apply {
-            uiState
-        }
+        binding = FragmentContactsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
