@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.architecture.blueprints.todoapp.R
+import com.example.android.architecture.blueprints.todoapp.components.interfaces.LocationTracker
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
 import com.example.android.architecture.blueprints.todoapp.model.Acceleration
 import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.DataSet
@@ -26,6 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class GraphViewModel @Inject constructor(
     @ApplicationContext context: Context,
+    private val locationTracker: LocationTracker,
     private val sensor: Sensor
 ) : ViewModel() {
 
@@ -176,10 +178,10 @@ class GraphViewModel @Inject constructor(
         }
         thread?.start()
     }
-//
-//    fun enableLocationService(activity: Activity) {
-//        if (!locationTracker.locationEnabled()) {
-//            locationTracker.showSettingsAlert(activity)
-//        }
-//    }
+
+    fun enableLocationService(context: Context) {
+        if (!locationTracker.locationEnabled()) {
+            locationTracker.showSettingsAlert(context)
+        }
+    }
 }
