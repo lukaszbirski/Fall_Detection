@@ -50,7 +50,7 @@ class GraphFragment : Fragment() {
         }
 
         viewModel.apply {
-//            enableLocationService(requireActivity())
+            enableLocationService(requireContext())
 
             feedMultiple()
 
