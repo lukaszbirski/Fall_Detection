@@ -40,25 +40,25 @@ class GraphFragment : Fragment() {
         setChart(binding.chart)
 
         binding.startBtn.setOnClickListener {
-//            viewModel.startService(binding.chart.lineData)
+            viewModel.startService(binding.chart.lineData, requireContext())
 //            passDataInterface.onDataReceived(false)
         }
 
         binding.stopBtn.setOnClickListener {
-//            viewModel.stopService()
+            viewModel.stopService()
 //            passDataInterface.onDataReceived(true)
         }
 
         viewModel.apply {
 //            enableLocationService(requireActivity())
-//
-//            feedMultiple()
-//
-//            lineData.observe(viewLifecycleOwner) {
-//                binding.chart.notifyDataSetChanged()
-//                binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
-//                it?.entryCount?.toFloat()?.let { count -> binding.chart.moveViewToX(count) }
-//            }
+
+            feedMultiple()
+
+            lineData.observe(viewLifecycleOwner) {
+                binding.chart.notifyDataSetChanged()
+                binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
+                it?.entryCount?.toFloat()?.let { count -> binding.chart.moveViewToX(count) }
+            }
         }
 
         return binding.root
