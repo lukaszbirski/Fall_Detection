@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp
+package com.example.android.architecture.blueprints.todoapp.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

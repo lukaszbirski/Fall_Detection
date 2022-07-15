@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp
+package com.example.android.architecture.blueprints.todoapp.presentation.fragment.adapter
 
 import com.example.android.architecture.blueprints.todoapp.model.Contact
 

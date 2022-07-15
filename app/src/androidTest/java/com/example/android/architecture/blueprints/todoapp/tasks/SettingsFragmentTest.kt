@@ -7,8 +7,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.R
-import com.example.android.architecture.blueprints.todoapp.SettingsFragment
 import com.example.android.architecture.blueprints.todoapp.launchFragmentInHiltContainer
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.SettingsFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -32,7 +32,7 @@ class SettingsFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun launchContactsFragment_allElementsAreDisplayed() {
+    fun launchSettingsFragment_allElementsAreDisplayed() {
         launchFragmentInHiltContainer<SettingsFragment> {}
 
         onView(withText(R.string.preferences_category_timer_title_text)).check(matches(isDisplayed()))

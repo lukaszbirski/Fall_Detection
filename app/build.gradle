@@ -260,4 +260,10 @@ dependencies {
 
     // preferences
     implementation 'androidx.preference:preference-ktx:1.2.0'
+
+    // MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // Material ProgressBar
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
 }

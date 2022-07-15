@@ -8,7 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.launchFragmentInHiltContainer
-import com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
-class ContactsFragmentTest {
+class GraphFragmentTest {
 
     @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
@@ -32,12 +32,12 @@ class ContactsFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun launchContactsFragment_allElementsAreDisplayed() {
-        launchFragmentInHiltContainer<ContactsFragment> {}
+    fun launchGraphFragment_allElementsAreDisplayed() {
+        launchFragmentInHiltContainer<GraphFragment> {}
 
-        onView(withId(R.id.titleTextView)).check(matches(isDisplayed()))
-        onView(withId(R.id.addItemTitleTextView)).check(matches(isDisplayed()))
-        onView(withId(R.id.contactsRecycler)).check(matches(isDisplayed()))
-        onView(withId(R.id.addContactButton)).check(matches(isDisplayed()))
+        onView(withId(R.id.accelerationTitleTextView)).check(matches(isDisplayed()))
+        onView(withId(R.id.chart)).check(matches(isDisplayed()))
+        onView(withId(R.id.startBtn)).check(matches(isDisplayed()))
+        onView(withId(R.id.stopBtn)).check(matches(isDisplayed()))
     }
 }
