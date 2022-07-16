@@ -8,7 +8,7 @@ import com.example.android.architecture.blueprints.todoapp.components.fake.PrefU
 import com.example.android.architecture.blueprints.todoapp.components.implementations.FallDetectorImpl
 import com.example.android.architecture.blueprints.todoapp.components.implementations.FilterImpl
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Filter
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.Algorithms
+import com.example.android.architecture.blueprints.todoapp.service.enum.Algorithms
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
