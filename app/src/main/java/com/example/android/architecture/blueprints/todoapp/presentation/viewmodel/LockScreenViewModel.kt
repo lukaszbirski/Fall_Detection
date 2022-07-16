@@ -1,6 +1,7 @@
 package com.example.android.architecture.blueprints.todoapp.presentation.viewmodel
 
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,8 @@ import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.MessageSender
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
+import com.example.android.architecture.blueprints.todoapp.service.TrackingService
+import com.example.android.architecture.blueprints.todoapp.service.enum.ServiceActions
 import com.example.android.architecture.blueprints.todoapp.usecase.UseCaseFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -81,14 +84,12 @@ class LockScreenViewModel @Inject constructor(
         }
     }
 
-    fun stopService() { sensor.stopMeasurement() }
+    fun stopService(context: Context) = sendCommandToService(context, ServiceActions.STOP)
+        .also { sensor.stopMeasurement() }
 
-//    fun stopService() = sendCommandToService(ServiceActions.STOP)
-//        .also { sensor.stopMeasurement() }
-//
-//    private fun sendCommandToService(action: ServiceActions) =
-//        Intent(application, TrackingService::class.java).also {
-//            it.action = action.name
-//            application.startService(it)
-//        }
+    private fun sendCommandToService(context: Context, action: ServiceActions) =
+        Intent(context, TrackingService::class.java).also {
+            it.action = action.name
+            context.startService(it)
+        }
 }

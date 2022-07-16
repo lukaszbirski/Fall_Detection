@@ -42,7 +42,7 @@ class GraphFragment : Fragment() {
         }
 
         binding.stopBtn.setOnClickListener {
-            viewModel.stopService()
+            viewModel.stopService(requireContext())
             sendBroadcast(true)
         }
 
