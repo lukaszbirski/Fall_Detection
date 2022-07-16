@@ -9,8 +9,8 @@ import com.example.android.architecture.blueprints.todoapp.model.Acceleration
 import com.example.android.architecture.blueprints.todoapp.model.HighPassFilterData
 import com.example.android.architecture.blueprints.todoapp.other.Constants
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.Algorithms
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.DataSet
+import com.example.android.architecture.blueprints.todoapp.service.enum.Algorithms
+import com.example.android.architecture.blueprints.todoapp.service.enum.DataSet
 import timber.log.Timber
 import javax.inject.Inject
 import kotlin.math.sqrt

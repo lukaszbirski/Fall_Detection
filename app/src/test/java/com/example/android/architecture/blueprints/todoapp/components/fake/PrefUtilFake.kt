@@ -1,7 +1,7 @@
 package com.example.android.architecture.blueprints.todoapp.components.fake
 
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.Algorithms
+import com.example.android.architecture.blueprints.todoapp.service.enum.Algorithms
 
 class PrefUtilFake : PrefUtil {
 

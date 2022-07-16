@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.example.android.architecture.blueprints.todoapp.R
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.Algorithms
+import com.example.android.architecture.blueprints.todoapp.service.enum.Algorithms
 import javax.inject.Inject
 
 class PrefUtilImpl @Inject constructor(

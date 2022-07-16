@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp.presentation.service.enum
+package com.example.android.architecture.blueprints.todoapp.service.enum
 
 enum class Algorithms(val number: String) {
     FIRST("1"),

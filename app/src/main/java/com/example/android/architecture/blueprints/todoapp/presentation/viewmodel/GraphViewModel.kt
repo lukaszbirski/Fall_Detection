@@ -10,7 +10,7 @@ import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.LocationTracker
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
 import com.example.android.architecture.blueprints.todoapp.model.Acceleration
-import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.DataSet
+import com.example.android.architecture.blueprints.todoapp.service.enum.DataSet
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
