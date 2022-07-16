@@ -35,13 +35,13 @@ class MainActivity : AppCompatActivity(), PassDataInterface {
                 if (!isFallDetected) {
                     isFallDetected = true
 
-//                    Intent(context, LockScreenActivity::class.java).also {
-//                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//                        it.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
-//                        startActivity(it)
-//                    }
+                    Intent(context, LockScreenActivity::class.java).also {
+                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        it.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+                        startActivity(it)
+                    }
                 }
             }
         }
