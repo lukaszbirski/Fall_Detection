@@ -36,15 +36,13 @@ class LockScreenActivity : AppCompatActivity() {
         binding.counterFragmentButton.setOnClickListener {
             timer.cancel()
             onTimerFinished()
-//            viewModel.stopService()
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
             }
         }
 
         viewModel.apply {
-//            stopService()
-
+            stopService()
             displayDialog.observe(this@LockScreenActivity) {
                 if (it) displayDialog()
             }

@@ -2,7 +2,9 @@ package com.example.android.architecture.blueprints.todoapp.di
 
 import android.content.Context
 import com.example.android.architecture.blueprints.todoapp.components.implementations.LocationTrackerImpl
+import com.example.android.architecture.blueprints.todoapp.components.implementations.MessageSenderImpl
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.LocationTracker
+import com.example.android.architecture.blueprints.todoapp.components.interfaces.MessageSender
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtilImpl
 import dagger.Module
@@ -24,4 +26,12 @@ object AppModule {
     @Singleton
     @Provides
     fun providePrefUtil(@ApplicationContext app: Context): PrefUtil = PrefUtilImpl(app)
+
+    @Singleton
+    @Provides
+    fun provideMessageSender(
+        @ApplicationContext app: Context,
+        locationTracker: LocationTracker
+    ): MessageSender =
+        MessageSenderImpl(app, locationTracker)
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.architecture.blueprints.todoapp.R
+import com.example.android.architecture.blueprints.todoapp.components.interfaces.MessageSender
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
 import com.example.android.architecture.blueprints.todoapp.usecase.UseCaseFactory
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LockScreenViewModel @Inject constructor(
     private val prefUtil: PrefUtil,
+    private val messageSender: MessageSender,
     private val useCaseFactory: UseCaseFactory,
     private val sensor: Sensor
 ) : ViewModel() {
@@ -73,11 +75,13 @@ class LockScreenViewModel @Inject constructor(
                         contact.number
                     )
                 }.toTypedArray()
-//                messageSender.startSendMessages(array)
+                messageSender.startSendMessages(array)
             }
             Timber.d("Messages was sent!")
         }
     }
+
+    fun stopService() { sensor.stopMeasurement() }
 
 //    fun stopService() = sendCommandToService(ServiceActions.STOP)
 //        .also { sensor.stopMeasurement() }

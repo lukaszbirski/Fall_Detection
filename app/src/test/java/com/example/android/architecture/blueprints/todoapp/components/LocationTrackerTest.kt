@@ -7,7 +7,6 @@ import androidx.test.core.app.ApplicationProvider
 import com.example.android.architecture.blueprints.todoapp.components.implementations.LocationTrackerImpl
 import org.junit.Before
 import org.junit.Test
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -39,13 +38,13 @@ class LocationTrackerTest {
     @Test
     fun `check if can get longitude`() {
         val longitude = locationTracker.getLongitude()
-        Assertions.assertEquals(20.9854009598633, longitude, 0.001)
+        assertEquals(20.9854009598633, longitude, 0.001)
     }
 
     @Test
     fun `check if can get latitude`() {
         val latitude = locationTracker.getLatitude()
-        Assertions.assertEquals(52.22824846991743, latitude, 0.001)
+        assertEquals(52.22824846991743, latitude, 0.001)
     }
 
     @Test
