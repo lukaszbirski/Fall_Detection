@@ -35,18 +35,18 @@ class GraphFragment : Fragment() {
     ): View? {
         binding = FragmentGraphBinding.inflate(inflater, container, false)
 
-//        passDataInterface = requireActivity() as PassDataInterface
+        passDataInterface = requireActivity() as PassDataInterface
 
         setChart(binding.chart)
 
         binding.startBtn.setOnClickListener {
             viewModel.startService(binding.chart.lineData, requireContext())
-//            passDataInterface.onDataReceived(false)
+            passDataInterface.onDataReceived(false)
         }
 
         binding.stopBtn.setOnClickListener {
             viewModel.stopService()
-//            passDataInterface.onDataReceived(true)
+            passDataInterface.onDataReceived(true)
         }
 
         viewModel.apply {
