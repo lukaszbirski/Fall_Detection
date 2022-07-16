@@ -69,8 +69,8 @@ class AppNavigationTest {
         hiltRule.inject()
     }
 
-//    @Test
-//    fun drawerNavigationFromTasksToStatistics() {
+    @Test
+    fun drawerNavigationFromTasksToStatistics() {
 //        setContent()
 //
 //        openDrawer()
@@ -86,10 +86,10 @@ class AppNavigationTest {
 //        // Check that tasks screen was opened.
 //        composeTestRule.onNodeWithText(activity.getString(R.string.no_tasks_all))
 //            .assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun tasksScreen_clickOnAndroidHomeIcon_OpensNavigation() {
+    }
+
+    @Test
+    fun tasksScreen_clickOnAndroidHomeIcon_OpensNavigation() {
 //        setContent()
 //
 //        // Check that left drawer is closed at startup
@@ -104,10 +104,10 @@ class AppNavigationTest {
 //        composeTestRule.onNodeWithText(activity.getString(R.string.list_title)).assertIsDisplayed()
 //        composeTestRule.onNodeWithText(activity.getString(R.string.statistics_title))
 //            .assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun statsScreen_clickOnAndroidHomeIcon_OpensNavigation() {
+    }
+
+    @Test
+    fun statsScreen_clickOnAndroidHomeIcon_OpensNavigation() {
 //        setContent()
 //
 //        // When the user navigates to the stats screen
@@ -125,10 +125,10 @@ class AppNavigationTest {
 //            composeTestRule.onAllNodesWithText(activity.getString(R.string.statistics_title))
 //                .fetchSemanticsNodes().isNotEmpty()
 //        )
-//    }
-//
-//    @Test
-//    fun taskDetailScreen_doubleUIBackButton() {
+    }
+
+    @Test
+    fun taskDetailScreen_doubleUIBackButton() {
 //        val taskName = "UI <- button"
 //        val task = Task(taskName, "Description")
 //        tasksRepository.saveTaskBlocking(task)
@@ -155,10 +155,10 @@ class AppNavigationTest {
 //        composeTestRule.onNodeWithContentDescription(activity.getString(R.string.menu_back))
 //            .performClick()
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun taskDetailScreen_doubleBackButton() {
+    }
+
+    @Test
+    fun taskDetailScreen_doubleBackButton() {
 //        val taskName = "Back button"
 //        val task = Task(taskName, "Description")
 //        tasksRepository.saveTaskBlocking(task)
@@ -179,8 +179,8 @@ class AppNavigationTest {
 //        // Confirm that if we click back a second time, we end up back at the home screen
 //        pressBack()
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
-//    }
-//
+    }
+
 //    private fun setContent() {
 //        composeTestRule.setContent {
 //            AppCompatTheme {

@@ -18,32 +18,38 @@ import com.example.android.architecture.blueprints.todoapp.presentation.fragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.HomeFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.SettingsFragment
-import com.example.android.architecture.blueprints.todoapp.presentation.listener.PassDataInterface
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), PassDataInterface {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: LayoutMainBinding
 
     private var isFallDetected = false
 
-    private var mMessageReceiver = object : BroadcastReceiver() {
+    private var fallReceiver = object : BroadcastReceiver() {
 
         override fun onReceive(context: Context?, intent: Intent) {
             intent.action.let {
                 if (!isFallDetected) {
                     isFallDetected = true
 
-//                    Intent(context, LockScreenActivity::class.java).also {
-//                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-//                        it.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
-//                        startActivity(it)
-//                    }
+                    Intent(context, LockScreenActivity::class.java).also {
+                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        it.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+                        startActivity(it)
+                    }
                 }
             }
+        }
+    }
+
+    private var interactorReceiver = object : BroadcastReceiver() {
+
+        override fun onReceive(context: Context?, intent: Intent) {
+            isFallDetected = intent.getBooleanExtra("boolean", false)
         }
     }
 
@@ -51,7 +57,7 @@ class MainActivity : AppCompatActivity(), PassDataInterface {
         super.onCreate(savedInstanceState)
         binding = LayoutMainBinding.inflate(layoutInflater)
 
-        registerBroadcastReceiver()
+        registerBroadcastReceivers()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
@@ -77,20 +83,20 @@ class MainActivity : AppCompatActivity(), PassDataInterface {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterBroadcastReceiver()
+        unregisterBroadcastReceivers()
     }
 
-    override fun onDataReceived(isDetected: Boolean) {
-        isFallDetected = isDetected
+    private fun unregisterBroadcastReceivers() {
+        unregisterReceiver(fallReceiver)
+        unregisterReceiver(interactorReceiver)
     }
 
-    private fun unregisterBroadcastReceiver() {
-        unregisterReceiver(mMessageReceiver)
-    }
-
-    private fun registerBroadcastReceiver() {
+    private fun registerBroadcastReceivers() {
         IntentFilter(Constants.CUSTOM_FALL_DETECTED_RECEIVER).also {
-            registerReceiver(mMessageReceiver, it)
+            registerReceiver(fallReceiver, it)
+        }
+        IntentFilter(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
+            registerReceiver(interactorReceiver, it)
         }
     }
 

@@ -3,7 +3,7 @@ package com.example.android.architecture.blueprints.todoapp.data.source
 import com.example.android.architecture.blueprints.todoapp.data.model.ContactEntity
 
 class AppDatabaseFake {
-    val contacts = mutableListOf<ContactEntity>(
+    val contacts = mutableListOf(
         ContactEntity(
             id = 0,
             name = "John",

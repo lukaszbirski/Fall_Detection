@@ -1,5 +1,6 @@
 package com.example.android.architecture.blueprints.todoapp.presentation.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android.architecture.blueprints.todoapp.databinding.FragmentGraphBinding
-import com.example.android.architecture.blueprints.todoapp.presentation.listener.PassDataInterface
+import com.example.android.architecture.blueprints.todoapp.other.Constants
 import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.GraphViewModel
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
@@ -26,8 +27,6 @@ class GraphFragment : Fragment() {
     private val MAX_Y_AXIS_VALUE = 1.5F
     private val MIN_Y_AXIS_VALUE = -1.5F
 
-    private lateinit var passDataInterface: PassDataInterface
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,18 +34,16 @@ class GraphFragment : Fragment() {
     ): View? {
         binding = FragmentGraphBinding.inflate(inflater, container, false)
 
-        passDataInterface = requireActivity() as PassDataInterface
-
         setChart(binding.chart)
 
         binding.startBtn.setOnClickListener {
             viewModel.startService(binding.chart.lineData, requireContext())
-            passDataInterface.onDataReceived(false)
+            sendBroadcast(false)
         }
 
         binding.stopBtn.setOnClickListener {
             viewModel.stopService()
-            passDataInterface.onDataReceived(true)
+            sendBroadcast(true)
         }
 
         viewModel.apply {
@@ -110,4 +107,10 @@ class GraphFragment : Fragment() {
             setDrawBorders(true)
         }
     }
+
+    private fun sendBroadcast(boolean: Boolean) =
+        Intent(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
+            it.putExtra("boolean", boolean)
+            context?.sendBroadcast(it)
+        }
 }
