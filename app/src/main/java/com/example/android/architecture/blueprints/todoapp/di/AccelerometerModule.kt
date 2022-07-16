@@ -7,6 +7,7 @@ import com.example.android.architecture.blueprints.todoapp.components.implementa
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.FallDetector
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Filter
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
+import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,8 +29,9 @@ object AccelerometerModule {
     @Provides
     fun provideFallDetector(
         @ApplicationContext context: Context,
-        filter: Filter
-    ): FallDetector = FallDetectorImpl(context, filter)
+        filter: Filter,
+        prefUtil: PrefUtil
+    ): FallDetector = FallDetectorImpl(context, filter, prefUtil)
 
     @Singleton
     @Provides

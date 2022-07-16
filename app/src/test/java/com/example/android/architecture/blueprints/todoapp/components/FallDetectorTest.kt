@@ -8,6 +8,8 @@ import com.example.android.architecture.blueprints.todoapp.components.implementa
 import com.example.android.architecture.blueprints.todoapp.components.implementations.FilterImpl
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Filter
 import com.example.android.architecture.blueprints.todoapp.model.Acceleration
+import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
+import com.example.android.architecture.blueprints.todoapp.other.PrefUtilImpl
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -28,16 +30,15 @@ class FallDetectorTest {
     private lateinit var fallDetector: FallDetectorImpl
 
     private lateinit var filter: Filter
-    // private lateinit var prefUtil: PrefUtil
+    private lateinit var prefUtil: PrefUtil
 
     private val context: Context = ApplicationProvider.getApplicationContext()
 
     @Before
     fun setup() {
         filter = FilterImpl()
-        // prefUtil = PrefUtilImpl(context)
-        // fallDetector = FallDetectorImpl(context, filter, prefUtil)
-        fallDetector = FallDetectorImpl(context, filter)
+        prefUtil = PrefUtilImpl(context)
+        fallDetector = FallDetectorImpl(context, filter, prefUtil)
     }
 
     @Test

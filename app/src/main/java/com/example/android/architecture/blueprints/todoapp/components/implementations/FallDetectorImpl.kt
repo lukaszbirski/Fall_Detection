@@ -8,6 +8,8 @@ import com.example.android.architecture.blueprints.todoapp.components.interfaces
 import com.example.android.architecture.blueprints.todoapp.model.Acceleration
 import com.example.android.architecture.blueprints.todoapp.model.HighPassFilterData
 import com.example.android.architecture.blueprints.todoapp.other.Constants
+import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
+import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.Algorithms
 import com.example.android.architecture.blueprints.todoapp.presentation.service.enum.DataSet
 import timber.log.Timber
 import javax.inject.Inject
@@ -15,7 +17,8 @@ import kotlin.math.sqrt
 
 class FallDetectorImpl @Inject constructor(
     private val context: Context,
-    private val filter: Filter
+    private val filter: Filter,
+    private val prefUtil: PrefUtil
 ) : FallDetector {
 
     private val ALPHA = filter.calculateAlpha(
@@ -101,11 +104,11 @@ class FallDetectorImpl @Inject constructor(
 
         if (postureDetectionSW.size >= Constants.POSTURE_DETECTION_SW_SIZE) {
             useFirstAlgorithm(hpfAcceleration, acceleration)
-//            when (prefUtil.getDetectionAlgorithm()) {
-//                Algorithms.FIRST -> useFirstAlgorithm(hpfAcceleration, acceleration)
-//                Algorithms.SECOND -> useSecondAlgorithm(hpfAcceleration, acceleration)
-//                Algorithms.THIRD -> useThirdAlgorithm(hpfAcceleration, acceleration)
-//            }
+            when (prefUtil.getDetectionAlgorithm()) {
+                Algorithms.FIRST -> useFirstAlgorithm(hpfAcceleration, acceleration)
+                Algorithms.SECOND -> useSecondAlgorithm(hpfAcceleration, acceleration)
+                Algorithms.THIRD -> useThirdAlgorithm(hpfAcceleration, acceleration)
+            }
         }
     }
 
@@ -225,21 +228,15 @@ class FallDetectorImpl @Inject constructor(
         }
     }
 
-//    private fun isFirstAlgorithm() =
-//        prefUtil.getDetectionAlgorithm() == Algorithms.FIRST
-//
-//    private fun isDetectingImpactForSecondAlgorithm() =
-//        prefUtil.getDetectionAlgorithm() == Algorithms.SECOND && isFalling()
-//
-//    private fun isDetectingImpactForThirdAlgorithm() =
-//        prefUtil.getDetectionAlgorithm() == Algorithms.THIRD &&
-//                isFalling() && isVelocityGreaterThanThreshold
+    private fun isFirstAlgorithm() =
+        prefUtil.getDetectionAlgorithm() == Algorithms.FIRST
 
-    private fun isFirstAlgorithm() = true
+    private fun isDetectingImpactForSecondAlgorithm() =
+        prefUtil.getDetectionAlgorithm() == Algorithms.SECOND && isFalling()
 
-    private fun isDetectingImpactForSecondAlgorithm() = false
-
-    private fun isDetectingImpactForThirdAlgorithm() = false
+    private fun isDetectingImpactForThirdAlgorithm() =
+        prefUtil.getDetectionAlgorithm() == Algorithms.THIRD &&
+            isFalling() && isVelocityGreaterThanThreshold
 
     private fun isFalling() = fallingTimeOut > -1
 
