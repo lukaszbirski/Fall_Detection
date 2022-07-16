@@ -73,8 +73,8 @@ class TasksTest {
         hiltRule.inject()
     }
 
-//    @Test
-//    fun editTask() {
+    @Test
+    fun editTask() {
 //        val originalTaskTitle = "TITLE1"
 //        repository.saveTaskBlocking(Task(originalTaskTitle, "DESCRIPTION"))
 //
@@ -106,10 +106,10 @@ class TasksTest {
 //        composeTestRule.onNodeWithText("NEW TITLE").assertIsDisplayed()
 //        // Verify previous task is not displayed
 //        composeTestRule.onNodeWithText(originalTaskTitle).assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun createOneTask_deleteTask() {
+    }
+
+    @Test
+    fun createOneTask_deleteTask() {
 //        setContent()
 //
 //        val taskTitle = "TITLE1"
@@ -136,10 +136,10 @@ class TasksTest {
 //            .performClick()
 //        composeTestRule.onNodeWithText(activity.getString(R.string.nav_all)).assertIsDisplayed()
 //        composeTestRule.onNodeWithText(taskTitle).assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun createTwoTasks_deleteOneTask() {
+    }
+
+    @Test
+    fun createTwoTasks_deleteOneTask() {
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION"))
 //        repository.saveTaskBlocking(Task("TITLE2", "DESCRIPTION"))
 //
@@ -159,10 +159,10 @@ class TasksTest {
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).performClick()
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE2").assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun markTaskAsCompleteOnDetailScreen_taskIsCompleteInList() {
+    }
+
+    @Test
+    fun markTaskAsCompleteOnDetailScreen_taskIsCompleteInList() {
 //        // Add 1 active task
 //        val taskTitle = "COMPLETED"
 //        repository.saveTaskBlocking(Task(taskTitle, "DESCRIPTION"))
@@ -184,10 +184,10 @@ class TasksTest {
 //        // Check that the task is marked as completed
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
 //        composeTestRule.onNode(isToggleable()).assertIsOn()
-//    }
-//
-//    @Test
-//    fun markTaskAsActiveOnDetailScreen_taskIsActiveInList() {
+    }
+
+    @Test
+    fun markTaskAsActiveOnDetailScreen_taskIsActiveInList() {
 //        // Add 1 completed task
 //        val taskTitle = "ACTIVE"
 //        repository.saveTaskBlocking(Task(taskTitle, "DESCRIPTION", true))
@@ -209,10 +209,10 @@ class TasksTest {
 //        // Check that the task is marked as active
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
 //        composeTestRule.onNode(isToggleable()).assertIsOff()
-//    }
-//
-//    @Test
-//    fun markTaskAsCompleteAndActiveOnDetailScreen_taskIsActiveInList() {
+    }
+
+    @Test
+    fun markTaskAsCompleteAndActiveOnDetailScreen_taskIsActiveInList() {
 //        // Add 1 active task
 //        val taskTitle = "ACT-COMP"
 //        repository.saveTaskBlocking(Task(taskTitle, "DESCRIPTION"))
@@ -236,10 +236,10 @@ class TasksTest {
 //        // Check that the task is marked as active
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
 //        composeTestRule.onNode(isToggleable()).assertIsOff()
-//    }
-//
-//    @Test
-//    fun markTaskAsActiveAndCompleteOnDetailScreen_taskIsCompleteInList() {
+    }
+
+    @Test
+    fun markTaskAsActiveAndCompleteOnDetailScreen_taskIsCompleteInList() {
 //        // Add 1 completed task
 //        val taskTitle = "COMP-ACT"
 //        repository.saveTaskBlocking(Task(taskTitle, "DESCRIPTION", true))
@@ -262,10 +262,10 @@ class TasksTest {
 //        // Check that the task is marked as active
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
 //        composeTestRule.onNode(isToggleable()).assertIsOn()
-//    }
-//
-//    @Test
-//    fun createTask() {
+    }
+
+    @Test
+    fun createTask() {
 //        setContent()
 //
 //        // Click on the "+" button, add details, and save
@@ -279,8 +279,8 @@ class TasksTest {
 //        // Then verify task is displayed on screen
 //        composeTestRule.onNodeWithText(activity.getString(R.string.label_all)).assertIsDisplayed()
 //        composeTestRule.onNodeWithText("title").assertIsDisplayed()
-//    }
-//
+    }
+
 //    private fun setContent() {
 //        composeTestRule.setContent {
 //            AppCompatTheme {

@@ -67,8 +67,8 @@ class TasksScreenTest {
         hiltRule.inject()
     }
 
-//    @Test
-//    fun displayTask_whenRepositoryHasData() {
+    @Test
+    fun displayTask_whenRepositoryHasData() {
 //        // GIVEN - One task already in the repository
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //
@@ -77,10 +77,10 @@ class TasksScreenTest {
 //
 //        // THEN - Verify task is displayed on screen
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun displayActiveTask() {
+    }
+
+    @Test
+    fun displayActiveTask() {
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //
 //        setContent()
@@ -93,10 +93,10 @@ class TasksScreenTest {
 //        openFilterAndSelectOption(R.string.nav_completed)
 //
 //        composeTestRule.onNodeWithText("TITLE1").assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun displayCompletedTask() {
+    }
+
+    @Test
+    fun displayCompletedTask() {
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1", true))
 //
 //        setContent()
@@ -108,10 +108,10 @@ class TasksScreenTest {
 //
 //        openFilterAndSelectOption(R.string.nav_completed)
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun markTaskAsComplete() {
+    }
+
+    @Test
+    fun markTaskAsComplete() {
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //
 //        setContent()
@@ -126,10 +126,10 @@ class TasksScreenTest {
 //        composeTestRule.onNodeWithText("TITLE1").assertDoesNotExist()
 //        openFilterAndSelectOption(R.string.nav_completed)
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun markTaskAsActive() {
+    }
+
+    @Test
+    fun markTaskAsActive() {
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1", true))
 //
 //        setContent()
@@ -144,10 +144,10 @@ class TasksScreenTest {
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
 //        openFilterAndSelectOption(R.string.nav_completed)
 //        composeTestRule.onNodeWithText("TITLE1").assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun showAllTasks() {
+    }
+
+    @Test
+    fun showAllTasks() {
 //        // Add one active task and one completed task
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //        repository.saveTaskBlocking(Task("TITLE2", "DESCRIPTION2", true))
@@ -158,10 +158,10 @@ class TasksScreenTest {
 //        openFilterAndSelectOption(R.string.nav_all)
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE2").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun showActiveTasks() {
+    }
+
+    @Test
+    fun showActiveTasks() {
 //        // Add 2 active tasks and one completed task
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //        repository.saveTaskBlocking(Task("TITLE2", "DESCRIPTION2"))
@@ -174,10 +174,10 @@ class TasksScreenTest {
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE2").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE3").assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun showCompletedTasks() {
+    }
+
+    @Test
+    fun showCompletedTasks() {
 //        // Add one active task and 2 completed tasks
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //        repository.saveTaskBlocking(Task("TITLE2", "DESCRIPTION2", true))
@@ -190,10 +190,10 @@ class TasksScreenTest {
 //        composeTestRule.onNodeWithText("TITLE1").assertDoesNotExist()
 //        composeTestRule.onNodeWithText("TITLE2").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE3").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun clearCompletedTasks() {
+    }
+
+    @Test
+    fun clearCompletedTasks() {
 //        // Add one active task and one completed task
 //        repository.saveTaskBlocking(Task("TITLE1", "DESCRIPTION1"))
 //        repository.saveTaskBlocking(Task("TITLE2", "DESCRIPTION2", true))
@@ -210,36 +210,36 @@ class TasksScreenTest {
 //        // Verify that only the active task is shown
 //        composeTestRule.onNodeWithText("TITLE1").assertIsDisplayed()
 //        composeTestRule.onNodeWithText("TITLE2").assertDoesNotExist()
-//    }
-//
-//    @Test
-//    fun noTasks_AllTasksFilter_AddTaskViewVisible() {
+    }
+
+    @Test
+    fun noTasks_AllTasksFilter_AddTaskViewVisible() {
 //        setContent()
 //
 //        openFilterAndSelectOption(R.string.nav_all)
 //
 //        // Verify the "You have no tasks!" text is shown
 //        composeTestRule.onNodeWithText("You have no tasks!").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun noTasks_CompletedTasksFilter_AddTaskViewNotVisible() {
+    }
+
+    @Test
+    fun noTasks_CompletedTasksFilter_AddTaskViewNotVisible() {
 //        setContent()
 //
 //        openFilterAndSelectOption(R.string.nav_completed)
 //        // Verify the "You have no completed tasks!" text is shown
 //        composeTestRule.onNodeWithText("You have no completed tasks!").assertIsDisplayed()
-//    }
-//
-//    @Test
-//    fun noTasks_ActiveTasksFilter_AddTaskViewNotVisible() {
+    }
+
+    @Test
+    fun noTasks_ActiveTasksFilter_AddTaskViewNotVisible() {
 //        setContent()
 //
 //        openFilterAndSelectOption(R.string.nav_active)
 //        // Verify the "You have no active tasks!" text is shown
 //        composeTestRule.onNodeWithText("You have no active tasks!").assertIsDisplayed()
-//    }
-//
+    }
+
 //    private fun setContent() {
 //        composeTestRule.setContent {
 //            AppCompatTheme {
