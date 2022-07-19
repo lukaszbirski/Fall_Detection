@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp.usecase
+package com.example.android.architecture.blueprints.todoapp.repository
 
 class UseCaseFactory(
     val addDriverUseCase: AddContactUseCase,

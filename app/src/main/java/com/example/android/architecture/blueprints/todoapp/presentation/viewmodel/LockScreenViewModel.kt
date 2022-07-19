@@ -10,9 +10,9 @@ import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.MessageSender
 import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
 import com.example.android.architecture.blueprints.todoapp.other.PrefUtil
+import com.example.android.architecture.blueprints.todoapp.repository.Repository
 import com.example.android.architecture.blueprints.todoapp.service.TrackingService
 import com.example.android.architecture.blueprints.todoapp.service.enum.ServiceActions
-import com.example.android.architecture.blueprints.todoapp.usecase.UseCaseFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class LockScreenViewModel @Inject constructor(
     private val prefUtil: PrefUtil,
     private val messageSender: MessageSender,
-    private val useCaseFactory: UseCaseFactory,
+    private val repository: Repository,
     private val sensor: Sensor
 ) : ViewModel() {
 
@@ -68,8 +68,7 @@ class LockScreenViewModel @Inject constructor(
 
     private fun sendMessages(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = useCaseFactory.getAllContactsUseCase.execute()
-
+            val result = repository.observeAllContacts()
             result.takeIf { it.isNotEmpty() }?.let {
                 val array: Array<String> = it.map { contact ->
                     context.getString(

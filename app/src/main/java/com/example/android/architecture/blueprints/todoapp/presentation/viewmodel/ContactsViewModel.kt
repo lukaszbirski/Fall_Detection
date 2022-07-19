@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.architecture.blueprints.todoapp.model.Contact
-import com.example.android.architecture.blueprints.todoapp.usecase.UseCaseFactory
+import com.example.android.architecture.blueprints.todoapp.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContactsViewModel @Inject constructor(
-    private val useCaseFactory: UseCaseFactory
+    private val repository: Repository
 ) : ViewModel() {
 
     private var newContact = Contact()
@@ -35,7 +35,7 @@ class ContactsViewModel @Inject constructor(
     fun addContact() {
         addPlusToPrefix()
         viewModelScope.launch(Dispatchers.IO) {
-            useCaseFactory.addDriverUseCase.execute(newContact)
+            repository.insertContact(newContact)
             getAllContacts()
         }
     }
@@ -46,7 +46,7 @@ class ContactsViewModel @Inject constructor(
 
     private fun getAllContacts() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = useCaseFactory.getAllContactsUseCase.execute() as ArrayList
+            val result = repository.observeAllContacts() as ArrayList
             Timber.d("Got ${result.size} contacts from database")
             _contacts.postValue(result)
         }
@@ -54,7 +54,7 @@ class ContactsViewModel @Inject constructor(
 
     fun removeContact(contact: Contact) {
         viewModelScope.launch(Dispatchers.IO) {
-            useCaseFactory.removeContactUseCase.execute(contact)
+            repository.deleteContact(contact)
             getAllContacts()
         }
     }

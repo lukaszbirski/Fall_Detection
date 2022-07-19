@@ -1,4 +1,4 @@
-package com.example.android.architecture.blueprints.todoapp.usecase
+package com.example.android.architecture.blueprints.todoapp.repository
 
 import com.example.android.architecture.blueprints.todoapp.data.source.AppDatabaseFake
 import com.example.android.architecture.blueprints.todoapp.data.source.ContactDaoFake
