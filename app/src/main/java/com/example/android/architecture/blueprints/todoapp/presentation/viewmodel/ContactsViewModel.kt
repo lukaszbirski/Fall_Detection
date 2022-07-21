@@ -44,7 +44,7 @@ class ContactsViewModel @Inject constructor(
         newContact = newContact.copy(prefix = "+${newContact.prefix}")
     }
 
-    internal fun getAllContacts() {
+    private fun getAllContacts() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repository.observeAllContacts() as ArrayList
             Timber.d("Got ${result.size} contacts from database")
