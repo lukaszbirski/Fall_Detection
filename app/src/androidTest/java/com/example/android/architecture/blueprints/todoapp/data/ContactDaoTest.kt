@@ -1,31 +1,36 @@
 package com.example.android.architecture.blueprints.todoapp.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.android.architecture.blueprints.todoapp.data.dao.ContactDao
 import com.example.android.architecture.blueprints.todoapp.data.model.ContactEntity
 import com.example.android.architecture.blueprints.todoapp.model.Contact
 import com.example.android.architecture.blueprints.todoapp.model.util.ContactMapper
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
+import javax.inject.Inject
+import javax.inject.Named
 
 @ExperimentalCoroutinesApi
-@RunWith(AndroidJUnit4::class)
 @SmallTest
+@HiltAndroidTest
 class ContactDaoTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var database: AppDatabase
+    @Inject
+    @Named("test_db")
+    lateinit var database: AppDatabase
     private lateinit var dao: ContactDao
     private lateinit var mapper: ContactMapper
 
@@ -35,10 +40,7 @@ class ContactDaoTest {
     @Before
     fun setup() {
         mapper = ContactMapper()
-        database = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(),
-            AppDatabase::class.java
-        ).allowMainThreadQueries().build()
+        hiltRule.inject()
         dao = database.contactDao()
     }
 
