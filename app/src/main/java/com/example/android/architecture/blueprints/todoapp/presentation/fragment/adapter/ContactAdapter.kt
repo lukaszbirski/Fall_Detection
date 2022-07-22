@@ -16,7 +16,7 @@ class ContactAdapter(
 
     override fun getItemCount() = contacts.size
 
-    inner class ContactViewHolder(
+    class ContactViewHolder(
         val binging: ContactItemBinding
     ) : RecyclerView.ViewHolder(binging.root)
 
