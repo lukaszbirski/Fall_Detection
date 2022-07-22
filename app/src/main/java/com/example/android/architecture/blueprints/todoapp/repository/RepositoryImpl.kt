@@ -19,5 +19,5 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun observeAllContacts() =
-        mapper.mapToDomainModelList(contactDao.getAllContacts())
+        mapper.mapToDomainModelList(contactDao.getAllContacts().sortedByDescending { it.id })
 }
