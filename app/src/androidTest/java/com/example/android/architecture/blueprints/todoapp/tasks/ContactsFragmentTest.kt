@@ -24,6 +24,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * End-to-End tests for the ContactsFragment.
+ */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
@@ -42,6 +45,7 @@ class ContactsFragmentTest {
     fun launchContactsFragment_allElementsAreDisplayed() {
         launchFragmentInHiltContainer<ContactsFragment> {}
 
+        // checks if all elements are displayed
         onView(withId(R.id.titleTextView)).check(matches(isDisplayed()))
         onView(withId(R.id.addItemTitleTextView)).check(matches(isDisplayed()))
         onView(withId(R.id.contactsRecycler)).check(matches(isDisplayed()))
