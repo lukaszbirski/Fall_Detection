@@ -3,9 +3,12 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
@@ -54,8 +57,25 @@ class LockScreenActivityTest {
         // click OK button
         onView(withId(R.id.counterFragmentButton)).perform(click())
         // check if navigated to home fragment
-        onView(ViewMatchers.withText("TEST")).check(matches(isDisplayed()))
+        onView(withText("TEST")).check(matches(isDisplayed()))
     }
 
-//    delay(120000)       // 120 sec
+    @Test
+    fun whenCountdownDoNotPressButton_displayDialogAndNavigateToHomeFragment(): Unit = runBlocking {
+        // wait 65 sec
+        delay(65000)
+        // checks if dialog is displayed
+        onView(ViewMatchers.isRoot()).inRoot(RootMatchers.isDialog())
+            .check(matches(isDisplayed()))
+        // checks if data are displayed in dialog
+        onView(withId(R.id.counterTimeOutTextView)).check(matches(isDisplayed()))
+        onView(withId(R.id.counterTimeOutImageView)).check(matches(isDisplayed()))
+        onView(withId(R.id.messageSentTextView)).check(matches(isDisplayed()))
+        onView(withText(R.string.time_out_dialog_exit_text)).check(matches(isDisplayed()))
+        onView(withText(R.string.time_out_dialog_exit_text)).check(matches(isEnabled()))
+        // clicks exit button
+        onView(withText(R.string.time_out_dialog_exit_text)).perform(click())
+        // check if navigated to home fragment
+        onView(withText("TEST")).check(matches(isDisplayed()))
+    }
 }
