@@ -2,7 +2,7 @@ package com.example.android.architecture.blueprints.todoapp.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -61,7 +61,7 @@ class GraphFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun detectFall_navigateToCounterScreen(): Unit = runBlocking {
+    fun falling_navigateToCounterScreen(): Unit = runBlocking {
         launchFragmentInHiltContainer<GraphFragment> {
             viewModel = GraphViewModel(
                 locationTracker = LocationTrackerFake(),
@@ -73,10 +73,31 @@ class GraphFragmentTest {
         }
 
         // press start button
-        onView(withId(R.id.startBtn)).perform(ViewActions.click())
+        onView(withId(R.id.startBtn)).perform(click())
         // wait 15 sec to detect fall
         delay(15000)
         // checks if counter screen is displayed
         onView(withId(R.id.fallDetectedTextView)).check(matches(isDisplayed()))
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun walking_doNotNavigateToCounterScreen(): Unit = runBlocking {
+        launchFragmentInHiltContainer<GraphFragment> {
+            viewModel = GraphViewModel(
+                locationTracker = LocationTrackerFake(),
+                sensor = SensorFake(
+                    fallDetector = fallDetector,
+                    signal = signal.signalWalking
+                )
+            )
+        }
+
+        // press start button
+        onView(withId(R.id.startBtn)).perform(click())
+        // wait 15 sec to detect fall
+        delay(15000)
+        // checks if graph screen is still displayed
+        onView(withId(R.id.accelerationTitleTextView)).check(matches(isDisplayed()))
     }
 }
