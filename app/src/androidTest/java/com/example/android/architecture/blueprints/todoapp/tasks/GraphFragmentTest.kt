@@ -9,8 +9,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.example.android.architecture.blueprints.todoapp.R
-import com.example.android.architecture.blueprints.todoapp.components.interfaces.Sensor
+import com.example.android.architecture.blueprints.todoapp.components.interfaces.FallDetector
 import com.example.android.architecture.blueprints.todoapp.fakes.LocationTrackerFake
+import com.example.android.architecture.blueprints.todoapp.fakes.SensorFake
+import com.example.android.architecture.blueprints.todoapp.fakes.SignalFake
 import com.example.android.architecture.blueprints.todoapp.launchFragmentInHiltContainer
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.GraphViewModel
@@ -24,7 +26,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Inject
-import javax.inject.Named
 
 @RunWith(AndroidJUnit4::class)
 @MediumTest
@@ -38,8 +39,9 @@ class GraphFragmentTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    @Named("test_sensor")
-    lateinit var sensor: Sensor
+    lateinit var fallDetector: FallDetector
+
+    private val signal = SignalFake()
 
     @Before
     fun init() {
@@ -63,14 +65,17 @@ class GraphFragmentTest {
         launchFragmentInHiltContainer<GraphFragment> {
             viewModel = GraphViewModel(
                 locationTracker = LocationTrackerFake(),
-                sensor = sensor
+                sensor = SensorFake(
+                    fallDetector = fallDetector,
+                    signal = signal.signalFall
+                )
             )
         }
 
         // press start button
         onView(withId(R.id.startBtn)).perform(ViewActions.click())
-        // wait 20 sec to detect fall
-        delay(20000)
+        // wait 15 sec to detect fall
+        delay(15000)
         // checks if counter screen is displayed
         onView(withId(R.id.fallDetectedTextView)).check(matches(isDisplayed()))
     }

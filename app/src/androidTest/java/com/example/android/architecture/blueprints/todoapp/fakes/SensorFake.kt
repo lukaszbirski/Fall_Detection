@@ -12,10 +12,9 @@ import com.example.android.architecture.blueprints.todoapp.other.Constants
 import javax.inject.Inject
 
 class SensorFake @Inject constructor(
-    private var fallDetector: FallDetector
+    private val fallDetector: FallDetector,
+    private val signal: List<Acceleration>
 ) : Sensor {
-
-    private val data = SignalFake()
 
     private lateinit var mainHandler: Handler
 
@@ -24,8 +23,8 @@ class SensorFake @Inject constructor(
 
     private val stabilize = object : Runnable {
         override fun run() {
-            if (index < data.signalFall.size) {
-                fallDetector.detectFall(data.signalFall[index])
+            if (index < signal.size) {
+                fallDetector.detectFall(signal[index])
                 index++
             }
             mainHandler.postDelayed(this, Constants.INTERVAL_MILISEC.toLong())
