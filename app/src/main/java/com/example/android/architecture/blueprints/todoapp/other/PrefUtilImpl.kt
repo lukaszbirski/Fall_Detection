@@ -15,8 +15,8 @@ class PrefUtilImpl @Inject constructor(
 
     override fun getTimerLength() = sp.getString(
         context.getString(R.string.shared_preferences_timer_length_list_key),
-        "2"
-    )?.toLong() ?: 2L
+        "1"
+    )?.toLong() ?: 1L
 
     override fun getDetectionAlgorithm(): Algorithms {
         val selectedValue = sp.getString(

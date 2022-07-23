@@ -12,6 +12,7 @@
         android:paddingVertical="30dp">
 
         <TextView
+            android:id="@+id/counterTimeOutTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -23,6 +24,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/counterTimeOutImageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
