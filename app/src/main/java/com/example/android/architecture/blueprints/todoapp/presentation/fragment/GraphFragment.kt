@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.android.architecture.blueprints.todoapp.databinding.FragmentGraphBinding
 import com.example.android.architecture.blueprints.todoapp.other.Constants
 import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.GraphViewModel
@@ -21,7 +21,7 @@ class GraphFragment : Fragment() {
 
     private lateinit var binding: FragmentGraphBinding
 
-    private val viewModel: GraphViewModel by viewModels()
+    lateinit var viewModel: GraphViewModel
 
     private val VISIBLE_X_RANGE_MAX = 150F
     private val MAX_Y_AXIS_VALUE = 1.5F
@@ -32,6 +32,8 @@ class GraphFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity())[GraphViewModel::class.java]
+
         binding = FragmentGraphBinding.inflate(inflater, container, false)
 
         setChart(binding.chart)
