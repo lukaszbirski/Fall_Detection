@@ -35,7 +35,7 @@
         android:icon="@drawable/ic_baseline_add_alert_24">
 
         <SwitchPreference
-            app:defaultValue="1"
+            app:defaultValue="0"
             app:key="@string/shared_preferences_send_message_key"
             app:title="@string/preferences_send_messages_title_text"
             app:useSimpleSummaryProvider="true" />
