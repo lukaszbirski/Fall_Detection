@@ -15,6 +15,7 @@ import com.example.android.architecture.blueprints.todoapp.fakes.SensorFake
 import com.example.android.architecture.blueprints.todoapp.fakes.SignalFake
 import com.example.android.architecture.blueprints.todoapp.launchFragmentInHiltContainer
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment
+import com.example.android.architecture.blueprints.todoapp.presentation.fragment.HomeFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.GraphViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -27,6 +28,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Inject
 
+/**
+ * End-to-End tests for the GraphFragment.
+ */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
@@ -74,6 +78,31 @@ class GraphFragmentTest {
 
         // press start button
         onView(withId(R.id.startBtn)).perform(click())
+        // wait 15 sec to detect fall
+        delay(15000)
+        // checks if counter screen is displayed
+        onView(withId(R.id.fallDetectedTextView)).check(matches(isDisplayed()))
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun detectFallInHomeScreen_navigateToCounterScreen(): Unit = runBlocking {
+        launchFragmentInHiltContainer<GraphFragment> {
+            viewModel = GraphViewModel(
+                locationTracker = LocationTrackerFake(),
+                sensor = SensorFake(
+                    fallDetector = fallDetector,
+                    signal = signal.signalFall
+                )
+            )
+        }
+
+        // press start button
+        onView(withId(R.id.startBtn)).perform(click())
+        // wait 1 sec
+        delay(1000)
+        // move to home screen
+        launchFragmentInHiltContainer<HomeFragment> {}
         // wait 15 sec to detect fall
         delay(15000)
         // checks if counter screen is displayed
