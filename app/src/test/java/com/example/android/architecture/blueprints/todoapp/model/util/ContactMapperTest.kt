@@ -6,6 +6,9 @@ import com.example.android.architecture.blueprints.todoapp.model.Contact
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the implementation of [ContactMapper].
+ */
 class ContactMapperTest {
 
     private val contactsEntity = AppDatabaseFake().contacts

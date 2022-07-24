@@ -13,6 +13,9 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
 
+/**
+ * Unit tests for the implementation of [LocationTrackerImpl].
+ */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.P])
 @DoNotInstrument
