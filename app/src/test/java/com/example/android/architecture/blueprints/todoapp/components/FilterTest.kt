@@ -6,6 +6,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
 
+/**
+ * Unit tests for the implementation of [FilterImpl].
+ */
 class FilterTest {
 
     // system in test

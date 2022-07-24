@@ -8,6 +8,9 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Unit tests for the implementation of [Repository].
+ */
 class RepositoryTest {
 
     private val appDatabase = AppDatabaseFake()
