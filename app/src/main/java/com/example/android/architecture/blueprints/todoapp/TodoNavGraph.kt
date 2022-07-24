@@ -37,7 +37,6 @@ import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.
 import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.USER_MESSAGE_ARG
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskScreen
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsScreen
-import com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailScreen
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksScreen
 import com.example.android.architecture.blueprints.todoapp.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
@@ -99,15 +98,6 @@ fun TodoNavGraph(
                     )
                 },
                 onBack = { navController.popBackStack() }
-            )
-        }
-        composable(TodoDestinations.TASK_DETAIL_ROUTE) {
-            TaskDetailScreen(
-                onEditTask = { taskId ->
-                    navActions.navigateToAddEditTask(R.string.edit_task, taskId)
-                },
-                onBack = { navController.popBackStack() },
-                onDeleteTask = { navActions.navigateToTasks(DELETE_RESULT_OK) }
             )
         }
     }
