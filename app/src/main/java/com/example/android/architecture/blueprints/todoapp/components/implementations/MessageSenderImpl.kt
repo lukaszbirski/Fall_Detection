@@ -54,9 +54,11 @@ class MessageSenderImpl @Inject constructor(
     }
 
     private fun sendSMS(phoneNumber: String, message: String) {
-        val sms: SmsManager = context.getSystemService(SmsManager::class.java)
-        val parts = sms.divideMessage(message)
-        mMessageSentTotalParts = parts.size
+        val sms: SmsManager? = context.getSystemService(SmsManager::class.java)
+        val parts = sms?.divideMessage(message)
+        parts?.let {
+            mMessageSentTotalParts = it.size
+        }
 
         val deliveryIntents = ArrayList<PendingIntent>()
         val sentIntents = ArrayList<PendingIntent>()
@@ -84,7 +86,7 @@ class MessageSenderImpl @Inject constructor(
             deliveryIntents.add(deliveredPI)
         }
         mMessageSentParts = 0
-        sms.sendMultipartTextMessage(phoneNumber, null, parts, sentIntents, deliveryIntents)
+        sms?.sendMultipartTextMessage(phoneNumber, null, parts, sentIntents, deliveryIntents)
     }
 
     private fun registerBroadCastReceivers() {
