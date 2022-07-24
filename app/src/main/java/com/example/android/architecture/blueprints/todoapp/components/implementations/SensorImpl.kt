@@ -45,7 +45,6 @@ class SensorImpl @Inject constructor(
         val sensor: Sensor? = manager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensor?.let {
             manager?.registerListener(this, sensor, Constants.INTERVAL_MILISEC * 1000)
-            runStabilizer()
         } ?: Toast.makeText(
             context,
             context.getText(R.string.accelerometer_not_supported_toast_text),
@@ -55,24 +54,14 @@ class SensorImpl @Inject constructor(
 
     override fun stopMeasurement() {
         manager?.unregisterListener(this)
-        stopStabilizer()
     }
 
     override fun getMutableAcceleration() = acceleration
 
-    override fun createAcceleration(event: SensorEvent) = Acceleration(
+    private fun createAcceleration(event: SensorEvent) = Acceleration(
         event.values[0].div(SensorManager.STANDARD_GRAVITY).toDouble(),
         event.values[1].div(SensorManager.STANDARD_GRAVITY).toDouble(),
         event.values[2].div(SensorManager.STANDARD_GRAVITY).toDouble(),
         event.timestamp / 1000000
     )
-
-    private fun runStabilizer() {
-//        mainHandler = Handler(Looper.getMainLooper())
-//        mainHandler?.post(stabilize)
-    }
-
-    private fun stopStabilizer() {
-//        mainHandler?.removeCallbacks(stabilize)
-    }
 }
