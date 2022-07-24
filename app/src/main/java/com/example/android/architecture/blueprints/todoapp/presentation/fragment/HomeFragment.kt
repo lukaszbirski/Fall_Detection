@@ -8,19 +8,15 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.databinding.FragmentMainBinding
 import com.example.android.architecture.blueprints.todoapp.other.PermissionUtil
-import com.example.android.architecture.blueprints.todoapp.tasks.TasksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-
-    private val viewModel: TasksViewModel by viewModels()
 
     private var requestSinglePermission = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -39,11 +35,6 @@ class HomeFragment : Fragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
         askForPermissions()
-
-        // TODO("remove this)
-        viewModel.apply {
-            uiState
-        }
 
         return binding.root
     }

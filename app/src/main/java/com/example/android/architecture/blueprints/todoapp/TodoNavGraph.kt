@@ -34,10 +34,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.TASK_ID_ARG
 import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.TITLE_ARG
-import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.USER_MESSAGE_ARG
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskScreen
 import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsScreen
-import com.example.android.architecture.blueprints.todoapp.tasks.TasksScreen
 import com.example.android.architecture.blueprints.todoapp.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -61,22 +59,6 @@ fun TodoNavGraph(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(
-            TodoDestinations.TASKS_ROUTE,
-            arguments = listOf(
-                navArgument(USER_MESSAGE_ARG) { type = NavType.IntType; defaultValue = 0 }
-            )
-        ) { entry ->
-            AppModalDrawer(drawerState, currentRoute, navActions) {
-                TasksScreen(
-                    userMessage = entry.arguments?.getInt(USER_MESSAGE_ARG)!!,
-                    onUserMessageDisplayed = { entry.arguments?.putInt(USER_MESSAGE_ARG, 0) },
-                    onAddTask = { navActions.navigateToAddEditTask(R.string.add_task, null) },
-                    onTaskClick = { task -> navActions.navigateToTaskDetail(task.id) },
-                    openDrawer = { coroutineScope.launch { drawerState.open() } }
-                )
-            }
-        }
         composable(TodoDestinations.STATISTICS_ROUTE) {
             AppModalDrawer(drawerState, currentRoute, navActions) {
                 StatisticsScreen(openDrawer = { coroutineScope.launch { drawerState.open() } })
@@ -86,7 +68,7 @@ fun TodoNavGraph(
             TodoDestinations.ADD_EDIT_TASK_ROUTE,
             arguments = listOf(
                 navArgument(TITLE_ARG) { type = NavType.IntType },
-                navArgument(TASK_ID_ARG) { type = NavType.StringType; nullable = true },
+                navArgument(TASK_ID_ARG) { type = NavType.StringType; nullable = true }
             )
         ) { entry ->
             val taskId = entry.arguments?.getString(TASK_ID_ARG)
