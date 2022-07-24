@@ -35,10 +35,7 @@ import androidx.navigation.navArgument
 import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.TASK_ID_ARG
 import com.example.android.architecture.blueprints.todoapp.TodoDestinationsArgs.TITLE_ARG
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskScreen
-import com.example.android.architecture.blueprints.todoapp.statistics.StatisticsScreen
-import com.example.android.architecture.blueprints.todoapp.util.AppModalDrawer
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Composable
 fun TodoNavGraph(
@@ -59,11 +56,6 @@ fun TodoNavGraph(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(TodoDestinations.STATISTICS_ROUTE) {
-            AppModalDrawer(drawerState, currentRoute, navActions) {
-                StatisticsScreen(openDrawer = { coroutineScope.launch { drawerState.open() } })
-            }
-        }
         composable(
             TodoDestinations.ADD_EDIT_TASK_ROUTE,
             arguments = listOf(
