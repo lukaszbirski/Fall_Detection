@@ -23,9 +23,11 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
+import org.junit.FixMethodOrder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.runners.MethodSorters
 import javax.inject.Inject
 
 /**
@@ -34,6 +36,7 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class GraphFragmentTest {
 
     @get:Rule(order = 0)
@@ -65,7 +68,7 @@ class GraphFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun falling_navigateToCounterScreen(): Unit = runBlocking {
+    fun registerFalling_navigateToCounterScreen(): Unit = runBlocking {
         launchFragmentInHiltContainer<GraphFragment> {
             viewModel = GraphViewModel(
                 locationTracker = LocationTrackerFake(),
@@ -86,7 +89,7 @@ class GraphFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun detectFallInHomeScreen_navigateToCounterScreen(): Unit = runBlocking {
+    fun registerFallingInHomeScreen_navigateToCounterScreen(): Unit = runBlocking {
         launchFragmentInHiltContainer<GraphFragment> {
             viewModel = GraphViewModel(
                 locationTracker = LocationTrackerFake(),
@@ -111,7 +114,7 @@ class GraphFragmentTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun walking_doNotNavigateToCounterScreen(): Unit = runBlocking {
+    fun noFalling_doNotNavigateToCounterScreen(): Unit = runBlocking {
         launchFragmentInHiltContainer<GraphFragment> {
             viewModel = GraphViewModel(
                 locationTracker = LocationTrackerFake(),

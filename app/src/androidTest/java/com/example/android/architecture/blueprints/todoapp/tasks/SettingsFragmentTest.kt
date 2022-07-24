@@ -17,6 +17,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * End-to-End tests for the SettingsFragment.
+ */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
