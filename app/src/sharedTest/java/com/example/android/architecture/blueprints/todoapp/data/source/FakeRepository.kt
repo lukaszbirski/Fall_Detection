@@ -46,10 +46,6 @@ class FakeRepository : TasksRepository {
         }
     }
 
-    fun setReturnError(value: Boolean) {
-        shouldReturnError = value
-    }
-
     override suspend fun refreshTasks() {
         // Tasks already refreshed
     }

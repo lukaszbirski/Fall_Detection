@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.databinding.FragmentContactsBinding
@@ -25,7 +25,7 @@ class ContactsFragment : Fragment(), ContactAdapterListener {
 
     private lateinit var binding: FragmentContactsBinding
 
-    private val viewModel: ContactsViewModel by viewModels()
+    lateinit var viewModel: ContactsViewModel
 
     private lateinit var nameEditText: EditText
     private lateinit var surnameEditText: EditText
@@ -75,6 +75,8 @@ class ContactsFragment : Fragment(), ContactAdapterListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity())[ContactsViewModel::class.java]
+
         binding = FragmentContactsBinding.inflate(inflater, container, false)
 
         viewModel.apply {

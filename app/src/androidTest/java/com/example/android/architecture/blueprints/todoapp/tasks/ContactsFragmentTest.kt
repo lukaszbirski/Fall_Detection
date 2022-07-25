@@ -19,17 +19,18 @@ import com.example.android.architecture.blueprints.todoapp.launchFragmentInHiltC
 import com.example.android.architecture.blueprints.todoapp.model.Contact
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment
 import com.example.android.architecture.blueprints.todoapp.presentation.fragment.adapter.ContactAdapter
+import com.example.android.architecture.blueprints.todoapp.presentation.viewmodel.ContactsViewModel
+import com.example.android.architecture.blueprints.todoapp.repository.Repository
 import com.example.android.architecture.blueprints.todoapp.util.CustomHelper
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.Matchers.not
 import org.junit.Before
-import org.junit.FixMethodOrder
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.MethodSorters
+import javax.inject.Inject
 
 /**
  * End-to-End tests for the ContactsFragment.
@@ -38,7 +39,6 @@ import org.junit.runners.MethodSorters
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest
-@FixMethodOrder(MethodSorters.DEFAULT)
 class ContactsFragmentTest {
 
     private val contact = Contact(
@@ -52,6 +52,9 @@ class ContactsFragmentTest {
     @get:Rule(order = 0)
     var hiltRule = HiltAndroidRule(this)
 
+    @Inject
+    lateinit var repository: Repository
+
     @Before
     fun init() {
         hiltRule.inject()
@@ -60,7 +63,9 @@ class ContactsFragmentTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun launchContactsFragment_allElementsAreDisplayed() {
-        launchFragmentInHiltContainer<ContactsFragment> {}
+        launchFragmentInHiltContainer<ContactsFragment> {
+            viewModel = ContactsViewModel(repository)
+        }
 
         // checks if all elements are displayed
         onView(withId(R.id.titleTextView)).check(matches(isDisplayed()))
@@ -72,7 +77,9 @@ class ContactsFragmentTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun addingContactClicksCancel_newElementsIsNotAddedToList() {
-        launchFragmentInHiltContainer<ContactsFragment> {}
+        launchFragmentInHiltContainer<ContactsFragment> {
+            viewModel = ContactsViewModel(repository)
+        }
 
         // check if button is displayed
         onView(withId(R.id.addContactButton)).check(matches(isDisplayed()))
@@ -104,7 +111,9 @@ class ContactsFragmentTest {
         // makes sure that some contact is in place
         whenAddingContact_newElementsIsDisplayedInList()
 
-        launchFragmentInHiltContainer<ContactsFragment> {}
+        launchFragmentInHiltContainer<ContactsFragment> {
+            viewModel = ContactsViewModel(repository)
+        }
 
         // clicks on remove button in first element of the list
         onView(withId(R.id.contactsRecycler)).perform(
@@ -165,7 +174,9 @@ class ContactsFragmentTest {
         // clicks remove button
         onView(withText(R.string.remove_contact_dialog_cancel_text)).perform(click())
 
-        launchFragmentInHiltContainer<ContactsFragment> {}
+        launchFragmentInHiltContainer<ContactsFragment> {
+            viewModel = ContactsViewModel(repository)
+        }
 
         // checks if removed element is not displayed on the list
         onView(withId(R.id.contactsRecycler))
@@ -175,7 +186,9 @@ class ContactsFragmentTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun whenAddingContact_newElementsIsDisplayedInList() {
-        launchFragmentInHiltContainer<ContactsFragment> {}
+        launchFragmentInHiltContainer<ContactsFragment> {
+            viewModel = ContactsViewModel(repository)
+        }
 
         // check if button is displayed
         onView(withId(R.id.addContactButton)).check(matches(isDisplayed()))
