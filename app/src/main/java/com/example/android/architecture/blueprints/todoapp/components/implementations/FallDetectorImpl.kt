@@ -103,7 +103,6 @@ class FallDetectorImpl @Inject constructor(
         )
 
         if (postureDetectionSW.size >= Constants.POSTURE_DETECTION_SW_SIZE) {
-            useFirstAlgorithm(hpfAcceleration, acceleration)
             when (prefUtil.getDetectionAlgorithm()) {
                 Algorithms.FIRST -> useFirstAlgorithm(hpfAcceleration, acceleration)
                 Algorithms.SECOND -> useSecondAlgorithm(hpfAcceleration, acceleration)
@@ -213,7 +212,6 @@ class FallDetectorImpl @Inject constructor(
             isDetectingImpactForSecondAlgorithm() ||
             isDetectingImpactForThirdAlgorithm()
         ) {
-            Timber.d("Starts to detect impact")
             if (isMinMaxSVGreaterThanThresholdForImpactPostureAlgorithm(minMaxSW) ||
                 isVerticalAccelerationGreaterThanThreshold(svTotal, svDynamic) ||
                 isSumVectorGreaterThanThreshold(svTotal, SV_TOT_THRESHOLD) ||

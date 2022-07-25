@@ -121,7 +121,6 @@ class ContactsFragment : Fragment(), ContactAdapterListener {
             requireContext().getText(R.string.contact_dialog_add_text)
         ) { dialog, _ ->
             viewModel.addContact()
-            binding.contactsRecycler.scrollToPosition(0)
             dialog.dismiss()
         }
 
