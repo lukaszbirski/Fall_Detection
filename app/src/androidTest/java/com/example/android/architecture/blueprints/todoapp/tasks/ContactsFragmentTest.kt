@@ -34,7 +34,6 @@ import javax.inject.Inject
 
 /**
  * End-to-End tests for the ContactsFragment.
- * Before running test on emulator remove all existing contacts from the list.
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
