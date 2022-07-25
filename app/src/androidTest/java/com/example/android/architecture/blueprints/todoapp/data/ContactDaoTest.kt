@@ -15,7 +15,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
-import javax.inject.Named
 
 @ExperimentalCoroutinesApi
 @SmallTest
@@ -29,7 +28,6 @@ class ContactDaoTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    @Named("test_db")
     lateinit var database: AppDatabase
     private lateinit var dao: ContactDao
     private lateinit var mapper: ContactMapper
