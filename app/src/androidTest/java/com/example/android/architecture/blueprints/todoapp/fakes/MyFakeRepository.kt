@@ -5,22 +5,7 @@ import com.example.android.architecture.blueprints.todoapp.repository.Repository
 
 class MyFakeRepository : Repository {
 
-    private val contacts = mutableListOf<Contact>(
-//        Contact(
-//            id = 0,
-//            name = "John",
-//            surname = "Smith",
-//            prefix = "+11",
-//            number = "123456789"
-//        ),
-//        Contact(
-//            id = 1,
-//            name = "Britney",
-//            surname = "Spears",
-//            prefix = "+12",
-//            number = "987654321"
-//        )
-    )
+    private val contacts = mutableListOf<Contact>()
 
     override suspend fun insertContact(contact: Contact) {
         contacts.add(contact)

@@ -11,7 +11,7 @@ import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 const val THEME_EXTRAS_BUNDLE_KEY = "androidx.fragment.app.testing.FragmentScenario" +
-        ".EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY"
+    ".EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY"
 
 @ExperimentalCoroutinesApi
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(

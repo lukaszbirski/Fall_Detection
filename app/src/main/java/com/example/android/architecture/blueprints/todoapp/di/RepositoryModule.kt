@@ -1,24 +1,25 @@
 package com.example.android.architecture.blueprints.todoapp.di
 
-import com.example.android.architecture.blueprints.todoapp.fakes.MyFakeRepository
+import com.example.android.architecture.blueprints.todoapp.data.AppDatabase
 import com.example.android.architecture.blueprints.todoapp.model.util.ContactMapper
 import com.example.android.architecture.blueprints.todoapp.repository.Repository
+import com.example.android.architecture.blueprints.todoapp.repository.RepositoryImpl
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.hilt.testing.TestInstallIn
 import javax.inject.Singleton
 
 @Module
-@TestInstallIn(
-    components = [SingletonComponent::class],
-    replaces = [MyRepositoryModule::class]
-)
-object MyRepositoryTestModule {
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideRepository(): Repository = MyFakeRepository()
+    fun provideRepository(
+        database: AppDatabase,
+        mapper: ContactMapper
+    ): Repository = RepositoryImpl(database.contactDao(), mapper)
 
     @Singleton
     @Provides
