@@ -7,13 +7,13 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "pl.birski.android.architecture.blueprints.master"
+        applicationId "pl.birski.falldetector.architecture.blueprints.master"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "pl.birski.android.architecture.blueprints.todoapp.CustomTestRunner"
+        testInstrumentationRunner "pl.birski.falldetector.architecture.blueprints.todoapp.CustomTestRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pl.birski.android.architecture.blueprints.todoapp">
+    package="pl.birski.falldetector.architecture.blueprints.todoapp">
 
     <application>
         <activity
