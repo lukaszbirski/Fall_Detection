@@ -16,6 +16,9 @@ import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
 
+/**
+ * Unit tests of [ContactDao].
+ */
 @ExperimentalCoroutinesApi
 @SmallTest
 @HiltAndroidTest

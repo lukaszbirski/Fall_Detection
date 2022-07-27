@@ -16,6 +16,9 @@ import org.junit.runner.RunWith
 import pl.birski.falldetector.launchFragmentInHiltContainer
 import pl.birski.falldetector.presentation.fragment.HomeFragment
 
+/**
+ * End-to-End tests of [HomeFragment].
+ */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
 @HiltAndroidTest

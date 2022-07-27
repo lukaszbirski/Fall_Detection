@@ -24,7 +24,7 @@ import pl.birski.falldetector.architecture.blueprints.todoapp.R
 import pl.birski.falldetector.presentation.LockScreenActivity
 
 /**
- * End-to-End tests for the LockScreenActivity.
+ * End-to-End tests of [LockScreenActivity].
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest

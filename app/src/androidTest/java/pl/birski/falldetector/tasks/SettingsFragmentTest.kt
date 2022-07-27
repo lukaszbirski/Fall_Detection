@@ -18,7 +18,7 @@ import pl.birski.falldetector.launchFragmentInHiltContainer
 import pl.birski.falldetector.presentation.fragment.SettingsFragment
 
 /**
- * End-to-End tests for the SettingsFragment.
+ * End-to-End tests of [SettingsFragment].
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest

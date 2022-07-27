@@ -8,15 +8,6 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.components.interfaces.FallDetector
-import pl.birski.falldetector.fakes.LocationTrackerFake
-import pl.birski.falldetector.fakes.SensorFake
-import pl.birski.falldetector.fakes.SignalFake
-import pl.birski.falldetector.launchFragmentInHiltContainer
-import pl.birski.falldetector.presentation.fragment.GraphFragment
-import pl.birski.falldetector.presentation.fragment.HomeFragment
-import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,10 +19,20 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
+import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.components.interfaces.FallDetector
+import pl.birski.falldetector.fakes.LocationTrackerFake
+import pl.birski.falldetector.fakes.SensorFake
+import pl.birski.falldetector.fakes.SignalFake
+import pl.birski.falldetector.launchFragmentInHiltContainer
+import pl.birski.falldetector.presentation.fragment.ContactsFragment
+import pl.birski.falldetector.presentation.fragment.GraphFragment
+import pl.birski.falldetector.presentation.fragment.HomeFragment
+import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
 import javax.inject.Inject
 
 /**
- * End-to-End tests for the GraphFragment.
+ * End-to-End tests of [GraphFragment].
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
