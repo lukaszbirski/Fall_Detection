@@ -224,4 +224,8 @@ dependencies {
 
     // Material ProgressBar
     implementation "me.zhanghai.android.materialprogressbar:library:$materialProgressBarVersion"
+
+    // Junit 5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitFiveVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitFiveVersion"
 }

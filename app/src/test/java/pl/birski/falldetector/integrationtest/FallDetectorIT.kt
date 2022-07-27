@@ -3,12 +3,6 @@ package pl.birski.falldetector.integrationtest
 import android.content.Context
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
-import pl.birski.falldetector.components.fake.FallDetectorDataFake
-import pl.birski.falldetector.components.fake.PrefUtilFake
-import pl.birski.falldetector.components.implementations.FallDetectorImpl
-import pl.birski.falldetector.components.implementations.FilterImpl
-import pl.birski.falldetector.components.interfaces.Filter
-import pl.birski.falldetector.service.enum.Algorithms
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -16,6 +10,12 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
+import pl.birski.falldetector.components.fake.FallDetectorDataFake
+import pl.birski.falldetector.components.fake.PrefUtilFake
+import pl.birski.falldetector.components.implementations.FallDetectorImpl
+import pl.birski.falldetector.components.implementations.FilterImpl
+import pl.birski.falldetector.components.interfaces.Filter
+import pl.birski.falldetector.service.enum.Algorithms
 
 /**
  * Integration test for the implementation of [FallDetectorImpl].

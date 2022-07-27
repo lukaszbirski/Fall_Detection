@@ -85,4 +85,5 @@ ext {
     preferencesVersion = '1.2.0'
     mpAndroidChartVersion = 'v3.1.0'
     materialProgressBarVersion = '1.4.2'
+    junitFiveVersion = '5.7.1'
 }
