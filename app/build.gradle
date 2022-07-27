@@ -126,6 +126,11 @@ android {
 dependencies {
 
     // App dependencies
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:1.4.2"
+
     implementation "androidx.annotation:annotation:$androidXAnnotations"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "com.jakewharton.timber:timber:$timberVersion"
@@ -146,18 +151,6 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation "androidx.hilt:hilt-navigation-compose:$hiltAndroidXVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
-
-    // Jetpack Compose
-    implementation "androidx.activity:activity-compose:$activityComposeVersion"
-    implementation "androidx.compose.material:material:$composeVersion"
-    implementation "androidx.compose.animation:animation:$composeVersion"
-    implementation "androidx.compose.ui:ui-tooling-preview:$composeVersion"
-    implementation "androidx.navigation:navigation-compose:$navigationVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$archLifecycleVersion"
-    implementation "com.google.accompanist:accompanist-appcompat-theme:$accompanistVersion"
-    implementation "com.google.accompanist:accompanist-swiperefresh:$accompanistVersion"
-    debugImplementation "androidx.compose.ui:ui-tooling:$composeVersion"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$composeVersion"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
@@ -209,61 +202,30 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
-    def fragment_version = "1.5.0"
-    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    // Testing Fragments in Isolation
-    debugImplementation("androidx.fragment:fragment-testing:$fragment_version")
+    // FragmentVersion
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+    debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
 
+    // Navigation component dependencies
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationComponentVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationComponentVersion"
 
+    // Easy Permissions
+    implementation "pub.devrel:easypermissions:$easyPermissions"
 
-
-
-
-
-
-
-
-
-
-
-
-
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-    // rx
-    def rxJavaVersion = '2.0.1'
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
-
-    // navigation component dependencies
-    def nav_version = "2.5.0"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    // easy Permissions
-    implementation 'pub.devrel:easypermissions:3.0.0'
-
-    // junit 5
-    def junit5 = "5.7.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5"
-
-    // androidx.test
-    def androidx_test = "1.5.0-alpha04"
-    androidTestImplementation "androidx.test:runner:$androidx_test"
-
-    implementation "androidx.appcompat:appcompat:1.4.2"
+    // Androidx.test
+    androidTestImplementation "androidx.test:runner:$androidxTestVersion"
 
     // preferences
-    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation "androidx.preference:preference-ktx:$preferencesVersion"
 
     // MPAndroidChart
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion"
 
     // Material ProgressBar
-    implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
+    implementation "me.zhanghai.android.materialprogressbar:library:$materialProgressBarVersion"
+
+    // Junit 5
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitFiveVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitFiveVersion"
 }

@@ -3,13 +3,6 @@ package pl.birski.falldetector.components
 import android.content.Context
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
-import pl.birski.falldetector.components.fake.FallDetectorDataFake
-import pl.birski.falldetector.components.implementations.FallDetectorImpl
-import pl.birski.falldetector.components.implementations.FilterImpl
-import pl.birski.falldetector.components.interfaces.Filter
-import pl.birski.falldetector.model.Acceleration
-import pl.birski.falldetector.other.PrefUtil
-import pl.birski.falldetector.other.PrefUtilImpl
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -18,6 +11,13 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
+import pl.birski.falldetector.components.fake.FallDetectorDataFake
+import pl.birski.falldetector.components.implementations.FallDetectorImpl
+import pl.birski.falldetector.components.implementations.FilterImpl
+import pl.birski.falldetector.components.interfaces.Filter
+import pl.birski.falldetector.model.Acceleration
+import pl.birski.falldetector.other.PrefUtil
+import pl.birski.falldetector.other.PrefUtilImpl
 
 /**
  * Unit tests for the implementation of [FallDetectorImpl].

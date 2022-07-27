@@ -1,10 +1,10 @@
 package pl.birski.falldetector.model.util
 
+import org.junit.Before
+import org.junit.Test
 import pl.birski.falldetector.data.model.ContactEntity
 import pl.birski.falldetector.data.source.AppDatabaseFake
 import pl.birski.falldetector.model.Contact
-import org.junit.Before
-import org.junit.Test
 
 /**
  * Unit tests for the implementation of [ContactMapper].

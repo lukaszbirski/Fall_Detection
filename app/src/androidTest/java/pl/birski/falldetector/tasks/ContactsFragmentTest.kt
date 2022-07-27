@@ -33,7 +33,7 @@ import pl.birski.falldetector.util.CustomHelper
 import javax.inject.Inject
 
 /**
- * End-to-End tests for the ContactsFragment.
+ * End-to-End tests of [ContactsFragment].
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest

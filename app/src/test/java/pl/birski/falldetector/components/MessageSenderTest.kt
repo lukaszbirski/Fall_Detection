@@ -3,10 +3,6 @@ package pl.birski.falldetector.components
 import android.content.Context
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.components.fake.LocationTrackerFake
-import pl.birski.falldetector.components.implementations.MessageSenderImpl
-import pl.birski.falldetector.components.interfaces.LocationTracker
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -14,6 +10,10 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
+import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.components.fake.LocationTrackerFake
+import pl.birski.falldetector.components.implementations.MessageSenderImpl
+import pl.birski.falldetector.components.interfaces.LocationTracker
 
 /**
  * Unit tests for the implementation of [MessageSenderImpl].

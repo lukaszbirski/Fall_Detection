@@ -1,10 +1,10 @@
 package pl.birski.falldetector.components
 
-import pl.birski.falldetector.components.implementations.FilterImpl
-import pl.birski.falldetector.model.HighPassFilterData
 import org.junit.Before
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
+import pl.birski.falldetector.components.implementations.FilterImpl
+import pl.birski.falldetector.model.HighPassFilterData
 
 /**
  * Unit tests for the implementation of [FilterImpl].

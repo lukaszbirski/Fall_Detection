@@ -1,12 +1,12 @@
 package pl.birski.falldetector.repository
 
+import kotlinx.coroutines.runBlocking
+import org.junit.Before
+import org.junit.Test
 import pl.birski.falldetector.data.source.AppDatabaseFake
 import pl.birski.falldetector.data.source.ContactDaoFake
 import pl.birski.falldetector.model.Contact
 import pl.birski.falldetector.model.util.ContactMapper
-import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
 
 /**
  * Unit tests for the implementation of [Repository].

@@ -6,9 +6,9 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.LockScreenActivity
-import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HiltTestActivity : AppCompatActivity() {
