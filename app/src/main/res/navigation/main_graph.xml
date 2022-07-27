@@ -6,18 +6,18 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.HomeFragment"
+        android:name="pl.birski.falldetector.presentation.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.SettingsFragment"
+        android:name="pl.birski.falldetector.presentation.fragment.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/contactsFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.ContactsFragment"
+        android:name="pl.birski.falldetector.presentation.fragment.ContactsFragment"
         android:label="ContactsFragment" />
     <fragment
         android:id="@+id/graphFragment"
-        android:name="com.example.android.architecture.blueprints.todoapp.presentation.fragment.GraphFragment"
+        android:name="pl.birski.falldetector.presentation.fragment.GraphFragment"
         android:label="GraphFragment" />
 </navigation>
