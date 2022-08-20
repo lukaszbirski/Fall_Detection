@@ -26,8 +26,10 @@ class MessageSenderTest {
     // system in test
     private lateinit var messageSender: MessageSenderImpl
 
-    private var locationTracker: LocationTracker = LocationTrackerFake()
-    private var context: Context = ApplicationProvider.getApplicationContext()
+    private var locationTracker: LocationTracker =
+        LocationTrackerFake()
+    private var context: Context =
+        ApplicationProvider.getApplicationContext()
 
     @Before
     fun setup() {
