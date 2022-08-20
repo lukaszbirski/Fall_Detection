@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        app:title="@string/preferences_category_timer_title_text"
+        app:title="@string/preferences_category_timer_title"
         android:icon="@drawable/ic_baseline_alarm_24">
 
         <ListPreference
@@ -11,13 +11,13 @@
             app:entries="@array/timer_lengths_entries"
             app:entryValues="@array/timer_lengths_values"
             app:key="@string/shared_preferences_timer_length_list_key"
-            app:title="@string/preferences_list_timer_title_text"
+            app:title="@string/preferences_list_timer_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:title="@string/preferences_category_detection_algorithm_title_text"
+        app:title="@string/preferences_category_algorithm_title"
         android:icon="@drawable/ic_baseline_settings_24">
 
         <ListPreference
@@ -25,13 +25,13 @@
             app:entries="@array/detection_algorithms_entries"
             app:entryValues="@array/detection_algorithms_values"
             app:key="@string/shared_preferences_detection_algorithms_list_key"
-            app:title="@string/preferences_list_algorithm_title_text"
+            app:title="@string/preferences_list_algorithm_title"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:title="@string/preferences_category_sending_notification_title_text"
+        app:title="@string/preferences_category_notification_title"
         android:icon="@drawable/ic_baseline_add_alert_24">
 
         <SwitchPreference

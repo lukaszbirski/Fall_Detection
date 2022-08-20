@@ -38,10 +38,10 @@
     <!--    Sensor ends here-->
 
     <!--    Preferences starts here-->
-    <string name="preferences_category_timer_title_text">Timer</string>
-    <string name="preferences_category_detection_algorithm_title_text">Detection Algorithm</string>
-    <string name="preferences_list_timer_title_text">Timer Length</string>
-    <string name="preferences_list_algorithm_title_text">Select Algorithm</string>
+    <string name="preferences_category_timer_title">Timer</string>
+    <string name="preferences_category_algorithm_title">Detection Algorithm</string>
+    <string name="preferences_list_timer_title">Timer Length</string>
+    <string name="preferences_list_algorithm_title">Select Algorithm</string>
     <string name="preferences_timer_array_one_minute_text">1 minute</string>
     <string name="preferences_timer_array_two_minute_text">2 minute</string>
     <string name="preferences_timer_array_five_minute_text">5 minute</string>
@@ -49,7 +49,7 @@
     <string name="preferences_algorithms_array_impact_posture_text">IMPACT + POSTURE</string>
     <string name="preferences_algorithms_array_impact_posture_fall_text">START OF FALL + IMPACT + POSTURE</string>
     <string name="preferences_algorithms_array_impact_velocity_posture_fall_text">START OF FALL + VELOCITY + IMPACT + POSTURE</string>
-    <string name="preferences_category_sending_notification_title_text">Sending notifications</string>
+    <string name="preferences_category_alert_title">Sending notifications</string>
     <string name="preferences_send_messages_title_text">Send messages</string>
     <!--    Preferences ends here-->
 
