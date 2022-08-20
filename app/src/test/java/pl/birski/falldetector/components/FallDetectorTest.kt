@@ -49,7 +49,7 @@ class FallDetectorTest {
         // parameters
         val sum = 1.6 // sum
         val threshold = 1.4 // threshold
-        val result = fallDetector.isSumVectorGreaterThanThreshold(sum, threshold)
+        val result = fallDetector.isSVGreaterThanThreshold(sum, threshold)
 
         assertEquals(true, result)
     }
@@ -59,7 +59,7 @@ class FallDetectorTest {
         // parameters
         val sum = 1.4 // sum
         val threshold = 1.6 // threshold
-        val result = fallDetector.isSumVectorGreaterThanThreshold(sum, threshold)
+        val result = fallDetector.isSVGreaterThanThreshold(sum, threshold)
 
         assertEquals(false, result)
     }
@@ -69,7 +69,7 @@ class FallDetectorTest {
         // parameters
         val sum = 1.4 // sum
         val threshold = 1.4 // threshold
-        val result = fallDetector.isSumVectorGreaterThanThreshold(sum, threshold)
+        val result = fallDetector.isSVGreaterThanThreshold(sum, threshold)
 
         assertEquals(false, result)
     }
@@ -117,7 +117,7 @@ class FallDetectorTest {
         val svTotal = 2.4 // svTotal
         val svDynamic = 1.3 // svDynamic
 
-        val result = fallDetector.isVerticalAccelerationGreaterThanThreshold(svTotal, svDynamic)
+        val result = fallDetector.isAccGreaterThanThreshold(svTotal, svDynamic)
 
         assertEquals(true, result)
     }
@@ -128,7 +128,7 @@ class FallDetectorTest {
         val svTotal = 1.0 // svTotal
         val svDynamic = 0.0 // svDynamic
 
-        val result = fallDetector.isVerticalAccelerationGreaterThanThreshold(svTotal, svDynamic)
+        val result = fallDetector.isAccGreaterThanThreshold(svTotal, svDynamic)
 
         assertEquals(false, result)
     }
@@ -280,7 +280,7 @@ class FallDetectorTest {
             Acceleration(0.0, 0.0, 225.0, 100)
         )
 
-        val result = fallDetector.numericalIntegrationTrapezoidalRule(accelerations)
+        val result = fallDetector.integrationTrapezoidalRule(accelerations)
         assertEquals(110.325, result, 0.001)
     }
 
