@@ -84,7 +84,8 @@ class GraphFragmentTest {
         // wait 15 sec to detect fall
         delay(15000)
         // checks if counter screen is displayed
-        onView(withId(R.id.fallDetectedTextView)).check(matches(isDisplayed()))
+        onView(withId(R.id.fallDetectedTextView))
+            .check(matches(isDisplayed()))
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
