@@ -25,7 +25,6 @@ import pl.birski.falldetector.fakes.LocationTrackerFake
 import pl.birski.falldetector.fakes.SensorFake
 import pl.birski.falldetector.fakes.SignalFake
 import pl.birski.falldetector.launchFragmentInHiltContainer
-import pl.birski.falldetector.presentation.fragment.ContactsFragment
 import pl.birski.falldetector.presentation.fragment.GraphFragment
 import pl.birski.falldetector.presentation.fragment.HomeFragment
 import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
