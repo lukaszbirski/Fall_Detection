@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "194903737926",
+    "project_id": "falldetector-1d35d",
+    "storage_bucket": "falldetector-1d35d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194903737926:android:2e1aed2ebccf0c456cac47",
+        "android_client_info": {
+          "package_name": "pl.birski.falldetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194903737926-og9kvkn230vdtllgmscgq7ucr58pqadm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBndatZQJ1xfU8r7ILg9gqlw1eeTPFLob4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194903737926-og9kvkn230vdtllgmscgq7ucr58pqadm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
