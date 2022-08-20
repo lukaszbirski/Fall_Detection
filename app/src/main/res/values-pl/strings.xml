@@ -38,10 +38,10 @@
     <!--    Sensor ends here-->
 
     <!--    Preferences starts here-->
-    <string name="preferences_category_timer_title_text">Timer</string>
-    <string name="preferences_category_detection_algorithm_title_text">Algorytm wykrywania</string>
-    <string name="preferences_list_timer_title_text">Długość timera</string>
-    <string name="preferences_list_algorithm_title_text">Wybierz algorytm</string>
+    <string name="preferences_category_timer_title">Timer</string>
+    <string name="preferences_category_algorithm_title">Algorytm wykrywania</string>
+    <string name="preferences_list_timer_title">Długość timera</string>
+    <string name="preferences_list_algorithm_title">Wybierz algorytm</string>
     <string name="preferences_timer_array_one_minute_text">1 minuta</string>
     <string name="preferences_timer_array_two_minute_text">2 minuty</string>
     <string name="preferences_timer_array_five_minute_text">5 minut</string>
@@ -49,7 +49,7 @@
     <string name="preferences_algorithms_array_impact_posture_text">IMPAKT + POSTAWA</string>
     <string name="preferences_algorithms_array_impact_posture_fall_text">POCZĄTEK UPADKU + IMPAKT + POSTAWA</string>
     <string name="preferences_algorithms_array_impact_velocity_posture_fall_text">POCZĄTEK UPADKU + PRĘDKOŚĆ + IMPAKT + POSTAWA</string>
-    <string name="preferences_category_sending_notification_title_text">Wysyłanie powiadomień</string>
+    <string name="preferences_category_alert_title">Wysyłanie powiadomień</string>
     <string name="preferences_send_messages_title_text">Wyślij wiadomości</string>
     <!--    Preferences ends here-->
 

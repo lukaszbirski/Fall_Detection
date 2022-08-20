@@ -38,15 +38,23 @@ class SettingsFragmentTest {
     fun launchSettingsFragment_allElementsAreDisplayed() {
         launchFragmentInHiltContainer<SettingsFragment> {}
 
-        onView(withText(R.string.preferences_category_timer_title_text)).check(matches(isDisplayed()))
-        onView(withText(R.string.preferences_list_timer_title_text)).check(matches(isDisplayed()))
-        onView(withText(R.string.preferences_category_detection_algorithm_title_text)).check(
-            matches(isDisplayed())
-        )
-        onView(withText(R.string.preferences_list_algorithm_title_text)).check(matches(isDisplayed()))
-        onView(withText(R.string.preferences_category_sending_notification_title_text)).check(
-            matches(isDisplayed())
-        )
-        onView(withText(R.string.preferences_send_messages_title_text)).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_category_timer_title)
+        ).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_list_timer_title)
+        ).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_category_algorithm_title)
+        ).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_list_algorithm_title)
+        ).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_category_alert_title)
+        ).check(matches(isDisplayed()))
+        onView(
+            withText(R.string.preferences_send_messages_title_text)
+        ).check(matches(isDisplayed()))
     }
 }
