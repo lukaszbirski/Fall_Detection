@@ -1,57 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="xx">Fall Detector is running</string>
-    <string name="add_task">New Task</string>
-    <string name="edit_task">Edit Task</string>
-    <string name="task_details">Task Details</string>
-    <string name="task_marked_complete">Task marked complete</string>
-    <string name="task_marked_active">Task marked active</string>
-    <string name="loading_tasks_error">Error while loading tasks</string>
-    <string name="completed_tasks_cleared">Completed tasks cleared</string>
-    <string name="menu_filter">Filter</string>
-    <string name="open_drawer">Open Drawer</string>
-    <string name="menu_back">Back</string>
-    <string name="menu_clear">Clear completed</string>
-    <string name="menu_delete_task">Delete task</string>
-    <string name="menu_more">More</string>
-    <string name="navigation_view_header_title">Todo</string>
-    <string name="title_hint">Title</string>
-    <string name="description_hint">Enter your task here.</string>
-    <string name="cd_save_task">Save task</string>
-    <string name="empty_task_message">Tasks cannot be empty</string>
-    <string name="successfully_saved_task_message">Task saved</string>
-    <string name="list_title">Task List</string>
-    <string name="statistics_title">Statistics</string>
-    <string name="statistics_no_tasks">You have no tasks.</string>
-    <string name="statistics_active_tasks">Active tasks: %.1f%%</string>
-    <string name="statistics_completed_tasks">Completed tasks: %.1f%%</string>
-    <string name="statistics_error">Error loading statistics.</string>
-    <string name="no_data">No data</string>
-    <string name="loading">LOADING</string>
-
-    <string-array name="list_tasks_array">
-        <item>@string/nav_all</item>
-        <item>@string/nav_active</item>
-        <item>@string/nav_completed</item>
-    </string-array>
-    <string name="nav_all">All</string>
-    <string name="nav_active">Active</string>
-    <string name="nav_completed">Completed</string>
-    <string name="label_all">All Tasks</string>
-    <string name="label_active">Active Tasks</string>
-    <string name="label_completed">Completed Tasks</string>
-    <string name="no_tasks_all">You have no tasks!</string>
-    <string name="no_tasks_active">You have no active tasks!</string>
-    <string name="no_tasks_completed">You have no completed tasks!</string>
-    <string name="refresh">Refresh</string>
-    <string name="successfully_deleted_task_message">Task was deleted</string>
-    <string name="successfully_added_task_message">Task added</string>
-    <string name="no_data_description" />
-
-    <!-- Content Descriptions -->
-    <string name="tasks_header_image_content_description">Tasks header image</string>
-    <string name="no_tasks_image_content_description">No tasks image</string>
-
     <!--    Application Name starts here-->
     <string name="app_name">Fall Detector</string>
     <!--    Application Name ends here-->
@@ -90,10 +38,10 @@
     <!--    Sensor ends here-->
 
     <!--    Preferences starts here-->
-    <string name="preferences_category_timer_title_text">Timer</string>
-    <string name="preferences_category_detection_algorithm_title_text">Detection Algorithm</string>
-    <string name="preferences_list_timer_title_text">Timer Length</string>
-    <string name="preferences_list_algorithm_title_text">Select Algorithm</string>
+    <string name="preferences_category_timer_title">Timer</string>
+    <string name="preferences_category_algorithm_title">Detection Algorithm</string>
+    <string name="preferences_list_timer_title">Timer Length</string>
+    <string name="preferences_list_algorithm_title">Select Algorithm</string>
     <string name="preferences_timer_array_one_minute_text">1 minute</string>
     <string name="preferences_timer_array_two_minute_text">2 minute</string>
     <string name="preferences_timer_array_five_minute_text">5 minute</string>
@@ -101,7 +49,7 @@
     <string name="preferences_algorithms_array_impact_posture_text">IMPACT + POSTURE</string>
     <string name="preferences_algorithms_array_impact_posture_fall_text">START OF FALL + IMPACT + POSTURE</string>
     <string name="preferences_algorithms_array_impact_velocity_posture_fall_text">START OF FALL + VELOCITY + IMPACT + POSTURE</string>
-    <string name="preferences_category_sending_notification_title_text">Sending notifications</string>
+    <string name="preferences_category_alert_title">Sending notifications</string>
     <string name="preferences_send_messages_title_text">Send messages</string>
     <!--    Preferences ends here-->
 
