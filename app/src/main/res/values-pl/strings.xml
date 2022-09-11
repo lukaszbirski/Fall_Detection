@@ -15,6 +15,15 @@
     <string name="bottom_navigation_contacts_text">Kontakty</string>
     <!--    Bottom navigation ends here-->
 
+    <!--    Home Fragment starts here-->
+    <string name="home_fragment_city_date_text">Warszawa 2022</string>
+    <string name="home_fragment_supervisor_text">promotor</string>
+    <string name="home_fragment_thesis_text">Aplikacja powstała w ramach \npracy dyplomowej inżynierskiej</string>
+    <string name="home_fragment_course_text">na kierunku Informatyka w \nspecjalności Informatyka stosowana</string>
+    <string name="home_fragment_uni_text">Politechnika Warszawska</string>
+    <string name="home_fragment_faculty_text">WYDZIAŁ ELEKTRYCZNY</string>
+    <!--    Home Fragment ends here-->
+
     <!--    Graph Fragment starts here-->
     <string name="graph_fragment_button_start_text">Start</string>
     <string name="graph_fragment_button_stop_text">Stop</string>
