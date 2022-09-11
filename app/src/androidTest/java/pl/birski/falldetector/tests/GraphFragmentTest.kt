@@ -1,4 +1,4 @@
-package pl.birski.falldetector.tasks
+package pl.birski.falldetector.tests
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView

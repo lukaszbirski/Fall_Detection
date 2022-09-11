@@ -1,4 +1,4 @@
-package pl.birski.falldetector.tasks
+package pl.birski.falldetector.tests
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
