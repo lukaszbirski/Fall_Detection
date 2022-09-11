@@ -32,6 +32,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -52,12 +54,16 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_check_circle_96dp" />
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/logoImageVIew"
+                    android:layout_width="95dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/pw_logo"
+                    app:civ_border_color="@color/cardview_dark_background"
+                    app:civ_border_width="0dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="0dp"
+                    app:civ_shadow_color="@color/cardview_dark_background"/>
 
             </LinearLayout>
 
