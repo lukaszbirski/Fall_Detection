@@ -57,7 +57,9 @@ class LockScreenActivityTest {
         // click OK button
         onView(withId(R.id.counterFragmentButton)).perform(click())
         // check if navigated to home fragment
-        onView(withText("TEST")).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_uni_text)).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_faculty_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.logoImageVIew)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -75,6 +77,8 @@ class LockScreenActivityTest {
         // clicks exit button
         onView(withText(R.string.time_out_dialog_exit_text)).perform(click())
         // check if navigated to home fragment
-        onView(withText("TEST")).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_uni_text)).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_faculty_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.logoImageVIew)).check(matches(isDisplayed()))
     }
 }
