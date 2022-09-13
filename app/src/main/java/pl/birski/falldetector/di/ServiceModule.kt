@@ -10,7 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.MainActivity
 import pl.birski.falldetector.service.enum.ServiceActions

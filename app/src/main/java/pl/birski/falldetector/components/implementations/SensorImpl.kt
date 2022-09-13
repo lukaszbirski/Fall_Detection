@@ -8,7 +8,7 @@ import android.hardware.SensorManager
 import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.interfaces.FallDetector
 import pl.birski.falldetector.model.Acceleration
 import pl.birski.falldetector.other.Constants

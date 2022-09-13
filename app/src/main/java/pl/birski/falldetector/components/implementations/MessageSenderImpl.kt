@@ -9,7 +9,7 @@ import android.os.Build
 import android.telephony.SmsManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.interfaces.LocationTracker
 import pl.birski.falldetector.components.interfaces.MessageSender
 import pl.birski.falldetector.other.Constants

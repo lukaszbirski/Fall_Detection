@@ -8,15 +8,141 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/test"
-            android:text="TEST"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02">
+
+            <LinearLayout
+                android:id="@+id/nameLinearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/uniTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="@string/home_fragment_uni_text" />
+
+                    <TextView
+                        android:id="@+id/facultyTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="@string/home_fragment_faculty_text" />
+
+                </LinearLayout>
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/logoImageVIew"
+                    android:layout_width="95dp"
+                    android:layout_height="90dp"
+                    android:src="@mipmap/pw_logo"
+                    app:civ_border_color="@color/cardview_dark_background"
+                    app:civ_border_width="0dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="0dp"
+                    app:civ_shadow_color="@color/cardview_dark_background"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/appDevTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/home_fragment_thesis_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/courseNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/home_fragment_course_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/thesisTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="40dp"
+                android:gravity="center"
+                android:text="TYTUL PRACY"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/authorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:layout_marginBottom="15dp"
+                android:text="@string/home_fragment_author_text"  />
+
+            <TextView
+                android:id="@+id/supervisorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_weight="1"
+                android:text="@string/home_fragment_supervisor_text"  />
+
+
+            <TextView
+                android:id="@+id/supervisorNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:layout_weight="1"
+                android:text="@string/home_fragment_supervisor_name_text"  />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dateCityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="65dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="@string/home_fragment_city_date_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

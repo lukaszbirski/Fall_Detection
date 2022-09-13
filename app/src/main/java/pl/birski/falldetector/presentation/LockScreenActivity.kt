@@ -12,8 +12,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.ActivityLockScreenBinding
+import pl.birski.falldetector.R
+import pl.birski.falldetector.databinding.ActivityLockScreenBinding
 import pl.birski.falldetector.extensions.visibleOrGone
 import pl.birski.falldetector.presentation.viewmodel.LockScreenViewModel
 

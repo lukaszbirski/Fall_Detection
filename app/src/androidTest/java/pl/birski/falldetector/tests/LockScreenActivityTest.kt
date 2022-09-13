@@ -1,4 +1,4 @@
-package pl.birski.falldetector.tasks
+package pl.birski.falldetector.tests
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -20,7 +20,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.presentation.LockScreenActivity
 
 /**
@@ -57,7 +57,9 @@ class LockScreenActivityTest {
         // click OK button
         onView(withId(R.id.counterFragmentButton)).perform(click())
         // check if navigated to home fragment
-        onView(withText("TEST")).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_uni_text)).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_faculty_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.logoImageVIew)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -75,6 +77,8 @@ class LockScreenActivityTest {
         // clicks exit button
         onView(withText(R.string.time_out_dialog_exit_text)).perform(click())
         // check if navigated to home fragment
-        onView(withText("TEST")).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_uni_text)).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_faculty_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.logoImageVIew)).check(matches(isDisplayed()))
     }
 }

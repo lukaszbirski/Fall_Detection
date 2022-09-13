@@ -1,4 +1,4 @@
-package pl.birski.falldetector.tasks
+package pl.birski.falldetector.tests
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.Espresso.onView
@@ -19,7 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.interfaces.FallDetector
 import pl.birski.falldetector.fakes.LocationTrackerFake
 import pl.birski.falldetector.fakes.SensorFake

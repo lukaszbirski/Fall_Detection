@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.ContactItemBinding
+import pl.birski.falldetector.R
+import pl.birski.falldetector.databinding.ContactItemBinding
 import pl.birski.falldetector.model.Contact
 
 class ContactAdapter(

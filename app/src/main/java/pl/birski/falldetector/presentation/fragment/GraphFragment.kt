@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.FragmentGraphBinding
-import pl.birski.falldetector.other.Constants
-import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.LineData
 import dagger.hilt.android.AndroidEntryPoint
+import pl.birski.falldetector.databinding.FragmentGraphBinding
+import pl.birski.falldetector.other.Constants
+import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
 
 @AndroidEntryPoint
 class GraphFragment : Fragment() {
