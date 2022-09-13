@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.interfaces.MessageSender
 import pl.birski.falldetector.components.interfaces.Sensor
 import pl.birski.falldetector.other.PrefUtil

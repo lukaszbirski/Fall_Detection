@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.internal.DoNotInstrument
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.fake.LocationTrackerFake
 import pl.birski.falldetector.components.implementations.MessageSenderImpl
 import pl.birski.falldetector.components.interfaces.LocationTracker

@@ -14,7 +14,7 @@ import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
 import android.widget.Toast
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.components.interfaces.LocationTracker
 import java.util.Locale
 import javax.inject.Inject

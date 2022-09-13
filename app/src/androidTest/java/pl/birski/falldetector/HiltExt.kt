@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentFactory
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
 
 const val THEME_EXTRAS_BUNDLE_KEY = "androidx.fragment.app.testing.FragmentScenario" +
     ".EmptyFragmentActivity.THEME_EXTRAS_BUNDLE_KEY"

@@ -22,7 +22,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.launchFragmentInHiltContainer
 import pl.birski.falldetector.model.Contact
 import pl.birski.falldetector.presentation.fragment.ContactsFragment
