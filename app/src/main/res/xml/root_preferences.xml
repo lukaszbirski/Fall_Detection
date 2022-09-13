@@ -31,7 +31,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:title="@string/preferences_category_notification_title"
+        app:title="@string/preferences_category_alert_title"
         android:icon="@drawable/ic_baseline_add_alert_24">
 
         <SwitchPreference

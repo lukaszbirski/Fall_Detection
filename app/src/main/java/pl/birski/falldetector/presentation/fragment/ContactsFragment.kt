@@ -12,13 +12,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.FragmentContactsBinding
+import dagger.hilt.android.AndroidEntryPoint
+import pl.birski.falldetector.R
+import pl.birski.falldetector.databinding.FragmentContactsBinding
 import pl.birski.falldetector.model.Contact
 import pl.birski.falldetector.presentation.fragment.adapter.ContactAdapter
 import pl.birski.falldetector.presentation.fragment.adapter.ContactAdapterListener
 import pl.birski.falldetector.presentation.viewmodel.ContactsViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ContactsFragment : Fragment(), ContactAdapterListener {

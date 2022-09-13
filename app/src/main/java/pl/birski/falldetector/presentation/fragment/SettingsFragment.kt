@@ -3,7 +3,7 @@ package pl.birski.falldetector.presentation.fragment
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 import dagger.hilt.android.AndroidEntryPoint
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat() {

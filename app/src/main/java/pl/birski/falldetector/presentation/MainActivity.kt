@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.LayoutMainBinding
+import pl.birski.falldetector.R
+import pl.birski.falldetector.databinding.LayoutMainBinding
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.fragment.ContactsFragment
 import pl.birski.falldetector.presentation.fragment.GraphFragment

@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
-import pl.birski.falldetector.architecture.blueprints.todoapp.databinding.FragmentMainBinding
+import pl.birski.falldetector.R
+import pl.birski.falldetector.databinding.FragmentMainBinding
 import pl.birski.falldetector.other.PermissionUtil
 import dagger.hilt.android.AndroidEntryPoint
 

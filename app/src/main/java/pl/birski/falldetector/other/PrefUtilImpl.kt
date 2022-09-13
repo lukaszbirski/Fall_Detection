@@ -3,7 +3,7 @@ package pl.birski.falldetector.other
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import pl.birski.falldetector.architecture.blueprints.todoapp.R
+import pl.birski.falldetector.R
 import pl.birski.falldetector.service.enum.Algorithms
 import javax.inject.Inject
 
