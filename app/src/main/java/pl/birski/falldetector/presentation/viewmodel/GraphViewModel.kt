@@ -63,12 +63,15 @@ class GraphViewModel @Inject constructor(
         job = null
     }
 
-    fun startService(lineData: LineData?, context: Context) =
+    fun startService(context: Context) =
         sendCommandToService(context, ServiceActions.START_OR_RESUME)
-            .also {
-                sensor.initiateSensor(context)
-                runGraphUpdate(lineData = lineData, context = context)
-            }
+
+//    fun startService(lineData: LineData?, context: Context) =
+//        sendCommandToService(context, ServiceActions.START_OR_RESUME)
+//            .also {
+//                sensor.initiateSensor(context)
+//                runGraphUpdate(lineData = lineData, context = context)
+//            }
 
     fun stopService(context: Context) = sendCommandToService(context, ServiceActions.STOP)
         .also {
