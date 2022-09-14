@@ -7,6 +7,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,7 @@ class GraphFragment : Fragment(), SensorEventListener {
         _binding = FragmentGraphBinding.inflate(inflater, container, false)
 
         mSensorManager = requireActivity().getSystemService(SENSOR_SERVICE) as SensorManager
-        mAccelerometer = mSensorManager!!.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
+        mAccelerometer = mSensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         if (mAccelerometer != null) {
             mSensorManager!!.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME)
@@ -96,8 +97,8 @@ class GraphFragment : Fragment(), SensorEventListener {
         val leftAxis = mChart!!.axisLeft
         leftAxis.textColor = Color.BLACK
         leftAxis.setDrawGridLines(true)
-        leftAxis.axisMaximum = 20f
-        leftAxis.axisMinimum = -20f
+        leftAxis.axisMaximum = 12f
+        leftAxis.axisMinimum = -12f
         leftAxis.setDrawGridLines(true)
         val rightAxis = mChart!!.axisRight
         rightAxis.isEnabled = false
@@ -111,10 +112,22 @@ class GraphFragment : Fragment(), SensorEventListener {
         val data = mChart!!.data
         if (data != null) {
             var setOne = data.getDataSetByIndex(0)
+            var setTwo = data.getDataSetByIndex(1)
+            var setThree = data.getDataSetByIndex(2)
 
             if (setOne == null) {
                 setOne = createSet()
                 data.addDataSet(setOne)
+            }
+
+            if (setTwo == null) {
+                setTwo = createSetTwo()
+                data.addDataSet(setTwo)
+            }
+
+            if (setThree == null) {
+                setThree = createSetThree()
+                data.addDataSet(setThree)
             }
 
             data.addEntry(
@@ -124,6 +137,23 @@ class GraphFragment : Fragment(), SensorEventListener {
                 ),
                 0
             )
+
+            data.addEntry(
+                Entry(
+                    setTwo.entryCount.toFloat(),
+                    event.values[1]
+                ),
+                1
+            )
+
+            data.addEntry(
+                Entry(
+                    setThree.entryCount.toFloat(),
+                    event.values[2]
+                ),
+                2
+            )
+
             data.notifyDataChanged()
 
             // let the chart know it's data has changed
@@ -143,6 +173,32 @@ class GraphFragment : Fragment(), SensorEventListener {
         set.axisDependency = YAxis.AxisDependency.LEFT
         set.lineWidth = 1f
         set.color = Color.BLUE
+        set.isHighlightEnabled = false
+        set.setDrawValues(false)
+        set.setDrawCircles(false)
+        set.mode = LineDataSet.Mode.CUBIC_BEZIER
+        set.cubicIntensity = 0.2f
+        return set
+    }
+
+    private fun createSetTwo(): LineDataSet {
+        val set = LineDataSet(null, "Y-axis acceleration")
+        set.axisDependency = YAxis.AxisDependency.LEFT
+        set.lineWidth = 1f
+        set.color = Color.GREEN
+        set.isHighlightEnabled = false
+        set.setDrawValues(false)
+        set.setDrawCircles(false)
+        set.mode = LineDataSet.Mode.CUBIC_BEZIER
+        set.cubicIntensity = 0.2f
+        return set
+    }
+
+    private fun createSetThree(): LineDataSet {
+        val set = LineDataSet(null, "Z-axis acceleration")
+        set.axisDependency = YAxis.AxisDependency.LEFT
+        set.lineWidth = 1f
+        set.color = Color.RED
         set.isHighlightEnabled = false
         set.setDrawValues(false)
         set.setDrawCircles(false)
@@ -185,6 +241,7 @@ class GraphFragment : Fragment(), SensorEventListener {
     override fun onSensorChanged(p0: SensorEvent) {
         if (plotData) {
             addEntry(p0)
+            Log.d("testuje", "onSensorChanged: ${p0.values[0]}, ${p0.values[1]}, ${p0.values[2]}")
             plotData = false
         }
     }
