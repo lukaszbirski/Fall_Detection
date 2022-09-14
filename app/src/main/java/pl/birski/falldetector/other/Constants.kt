@@ -24,11 +24,11 @@ object Constants {
     // impact is measured within 1 s frame
     const val FALLING_TIME_SPAN = 1_000 / INTERVAL_MILISEC
 
-    const val CUSTOM_FALL_DETECTED_RECEIVER = "com.example.android.architecture.blueprints.todoapp.CUSTOM_INTENT"
+    const val CUSTOM_FALL_DETECTED_RECEIVER = "pl.birski.falldetector.CUSTOM_INTENT"
 
-    const val CUSTOM_FALL_DETECTED_INTENT_INTERACTOR = "com.example.android.architecture.blueprints.todoapp.INTERACTOR"
+    const val CUSTOM_FALL_DETECTED_INTENT_INTERACTOR = "pl.birski.falldetector.INTERACTOR"
 
-    const val CUSTOM_FALL_DETECTED_INTENT_SMS_SENT = "com.example.android.architecture.blueprints.todoapp.SMS_SENT"
+    const val CUSTOM_FALL_DETECTED_INTENT_SMS_SENT = "pl.birski.falldetector.SMS_SENT"
 
-    const val CUSTOM_FALL_DETECTED_INTENT_SMS_DELIVERED = "com.example.android.architecture.blueprints.todoapp.SMS_DELIVERED"
+    const val CUSTOM_FALL_DETECTED_INTENT_SMS_DELIVERED = "pl.birski.falldetector.SMS_DELIVERED"
 }

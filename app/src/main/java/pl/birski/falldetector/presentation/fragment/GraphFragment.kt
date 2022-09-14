@@ -1,13 +1,8 @@
 package pl.birski.falldetector.presentation.fragment
 
-import android.content.Context.SENSOR_SERVICE
+import android.content.Intent
 import android.graphics.Color
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,24 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import dagger.hilt.android.AndroidEntryPoint
 import pl.birski.falldetector.databinding.FragmentGraphBinding
+import pl.birski.falldetector.model.Acceleration
+import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
+import pl.birski.falldetector.service.enum.DataSet
 
 @AndroidEntryPoint
-class GraphFragment : Fragment(), SensorEventListener {
+class GraphFragment : Fragment() {
 
     private var _binding: FragmentGraphBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: GraphViewModel by viewModels()
 
-    private var mSensorManager: SensorManager? = null
-    private var mAccelerometer: Sensor? = null
+    private val VISIBLE_X_RANGE_MAX = 150F
+    private val MAX_Y_AXIS_VALUE = 1.5F
+    private val MIN_Y_AXIS_VALUE = -1.5F
+    private val THREAD_SLEEP_TIME = 10L
+
     private var mChart: LineChart? = null
     private var thread: Thread? = null
     private var plotData = true
@@ -44,115 +42,64 @@ class GraphFragment : Fragment(), SensorEventListener {
     ): View? {
         _binding = FragmentGraphBinding.inflate(inflater, container, false)
 
-        mSensorManager = requireActivity().getSystemService(SENSOR_SERVICE) as SensorManager
-        mAccelerometer = mSensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
-        if (mAccelerometer != null) {
-            mSensorManager!!.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME)
-        }
-
         binding.startBtn.setOnClickListener {
             viewModel.startService(requireContext())
         }
 
         binding.stopBtn.setOnClickListener {
             viewModel.stopService(requireContext())
+            sendBroadcast()
         }
+
+        viewModel.acceleration.observe(viewLifecycleOwner) {
+            if (plotData) {
+                addEntry(it)
+                plotData = false
+            }
+        }
+
+        viewModel.enableLocationService(requireContext())
 
         mChart = binding.chart
 
-        // disable description text
-        mChart!!.description.isEnabled = false
+        setChart(binding.chart)
 
-        // enable touch gestures
-        mChart!!.setTouchEnabled(false)
-
-        // enable scaling and dragging
-        mChart!!.isDragEnabled = false
-        mChart!!.setScaleEnabled(true)
-        mChart!!.setDrawGridBackground(true)
-
-        // if disabled, scaling can be done on x- and y-axis separately
-        mChart!!.setPinchZoom(true)
-
-        // set an alternative background color
-        mChart!!.setBackgroundColor(Color.WHITE)
-        val data = LineData()
-        data.setValueTextColor(Color.WHITE)
-
-        // add empty data
-        mChart!!.data = data
-
-        // get the legend (only possible after setting data)
-        val l = mChart!!.legend
-
-        // modify the legend ...
-        l.form = Legend.LegendForm.LINE
-        l.textColor = Color.BLACK
-        val xl = mChart!!.xAxis
-        xl.textColor = Color.WHITE
-        xl.setDrawGridLines(true)
-        xl.setAvoidFirstLastClipping(true)
-        xl.isEnabled = true
-        val leftAxis = mChart!!.axisLeft
-        leftAxis.textColor = Color.BLACK
-        leftAxis.setDrawGridLines(true)
-        leftAxis.axisMaximum = 12f
-        leftAxis.axisMinimum = -12f
-        leftAxis.setDrawGridLines(true)
-        val rightAxis = mChart!!.axisRight
-        rightAxis.isEnabled = false
-        mChart!!.setDrawBorders(true)
         feedMultiple()
 
         return binding.root
     }
 
-    private fun addEntry(event: SensorEvent) {
+    override fun onPause() {
+        super.onPause()
+        if (thread != null) {
+            thread!!.interrupt()
+        }
+    }
+
+    override fun onDestroy() {
+        thread!!.interrupt()
+        super.onDestroy()
+    }
+
+    private fun addEntry(acceleration: Acceleration) {
         val data = mChart!!.data
-        if (data != null) {
-            var setOne = data.getDataSetByIndex(0)
-            var setTwo = data.getDataSetByIndex(1)
-            var setThree = data.getDataSetByIndex(2)
 
-            if (setOne == null) {
-                setOne = createSet()
-                data.addDataSet(setOne)
-            }
+        data?.let {
+            val xMeasurement =
+                data.getDataSetByIndex(0) ?: viewModel.createSet(DataSet.X_AXIS, requireContext())
+                    .also { data.addDataSet(it) }
 
-            if (setTwo == null) {
-                setTwo = createSetTwo()
-                data.addDataSet(setTwo)
-            }
+            val yMeasurement =
+                data.getDataSetByIndex(1) ?: viewModel.createSet(DataSet.Y_AXIS, requireContext())
+                    .also { data.addDataSet(it) }
 
-            if (setThree == null) {
-                setThree = createSetThree()
-                data.addDataSet(setThree)
-            }
+            val zMeasurement =
+                data.getDataSetByIndex(2) ?: viewModel.createSet(DataSet.Z_AXIS, requireContext())
+                    .also { data.addDataSet(it) }
 
-            data.addEntry(
-                Entry(
-                    setOne.entryCount.toFloat(),
-                    event.values[0]
-                ),
-                0
-            )
-
-            data.addEntry(
-                Entry(
-                    setTwo.entryCount.toFloat(),
-                    event.values[1]
-                ),
-                1
-            )
-
-            data.addEntry(
-                Entry(
-                    setThree.entryCount.toFloat(),
-                    event.values[2]
-                ),
-                2
-            )
+            data.addEntry(viewModel.createEntry(acceleration, xMeasurement, DataSet.X_AXIS), 0)
+            data.addEntry(viewModel.createEntry(acceleration, yMeasurement, DataSet.Y_AXIS), 1)
+            data.addEntry(viewModel.createEntry(acceleration, zMeasurement, DataSet.Z_AXIS), 2)
 
             data.notifyDataChanged()
 
@@ -160,51 +107,12 @@ class GraphFragment : Fragment(), SensorEventListener {
             mChart!!.notifyDataSetChanged()
 
             // limit the number of visible entries
-            mChart!!.setVisibleXRangeMaximum(150f)
+            mChart!!.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
             // mChart.setVisibleYRange(30, AxisDependency.LEFT);
 
             // move to the latest entry
             mChart!!.moveViewToX(data.entryCount.toFloat())
         }
-    }
-
-    private fun createSet(): LineDataSet {
-        val set = LineDataSet(null, "X-axis acceleration")
-        set.axisDependency = YAxis.AxisDependency.LEFT
-        set.lineWidth = 1f
-        set.color = Color.BLUE
-        set.isHighlightEnabled = false
-        set.setDrawValues(false)
-        set.setDrawCircles(false)
-        set.mode = LineDataSet.Mode.CUBIC_BEZIER
-        set.cubicIntensity = 0.2f
-        return set
-    }
-
-    private fun createSetTwo(): LineDataSet {
-        val set = LineDataSet(null, "Y-axis acceleration")
-        set.axisDependency = YAxis.AxisDependency.LEFT
-        set.lineWidth = 1f
-        set.color = Color.GREEN
-        set.isHighlightEnabled = false
-        set.setDrawValues(false)
-        set.setDrawCircles(false)
-        set.mode = LineDataSet.Mode.CUBIC_BEZIER
-        set.cubicIntensity = 0.2f
-        return set
-    }
-
-    private fun createSetThree(): LineDataSet {
-        val set = LineDataSet(null, "Z-axis acceleration")
-        set.axisDependency = YAxis.AxisDependency.LEFT
-        set.lineWidth = 1f
-        set.color = Color.RED
-        set.isHighlightEnabled = false
-        set.setDrawValues(false)
-        set.setDrawCircles(false)
-        set.mode = LineDataSet.Mode.CUBIC_BEZIER
-        set.cubicIntensity = 0.2f
-        return set
     }
 
     private fun feedMultiple() {
@@ -215,7 +123,7 @@ class GraphFragment : Fragment(), SensorEventListener {
             while (true) {
                 plotData = true
                 try {
-                    Thread.sleep(10)
+                    Thread.sleep(THREAD_SLEEP_TIME)
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
@@ -224,36 +132,58 @@ class GraphFragment : Fragment(), SensorEventListener {
         thread!!.start()
     }
 
-    override fun onPause() {
-        super.onPause()
-        if (thread != null) {
-            thread!!.interrupt()
+    private fun setChart(chart: LineChart) {
+        chart.apply {
+            // disable description text
+            description.isEnabled = false
+
+            // enable touch gestures
+            setTouchEnabled(false)
+
+            // enable scaling and dragging
+            isDragEnabled = false
+            setScaleEnabled(true)
+            setDrawGridBackground(true)
+
+            // if disabled, scaling can be done on x- and y-axis separately
+            setPinchZoom(true)
+
+            // set an alternative background color
+            setBackgroundColor(Color.WHITE)
+            val lineData = LineData()
+            lineData.setValueTextColor(Color.WHITE)
+
+            // add empty data
+            data = lineData
+
+            // get the legend (only possible after setting data)
+            val l = legend
+
+            // modify the legend ...
+            l.form = Legend.LegendForm.LINE
+            l.textColor = Color.BLACK
+            val xl = xAxis
+            xl.textColor = Color.WHITE
+            xl.setDrawGridLines(true)
+            xl.setAvoidFirstLastClipping(true)
+            xl.isEnabled = true
+            val leftAxis = axisLeft
+            leftAxis.textColor = Color.BLACK
+            leftAxis.setDrawGridLines(true)
+            leftAxis.axisMaximum = MAX_Y_AXIS_VALUE
+            leftAxis.axisMinimum = MIN_Y_AXIS_VALUE
+            leftAxis.setDrawGridLines(true)
+            val rightAxis = axisRight
+            rightAxis.isEnabled = false
+            setDrawBorders(true)
         }
-        mSensorManager!!.unregisterListener(this)
     }
 
-    override fun onDestroy() {
-        mSensorManager!!.unregisterListener(this@GraphFragment)
-        thread!!.interrupt()
-        super.onDestroy()
-    }
-
-    override fun onSensorChanged(p0: SensorEvent) {
-        if (plotData) {
-            addEntry(p0)
-            Log.d("testuje", "onSensorChanged: ${p0.values[0]}, ${p0.values[1]}, ${p0.values[2]}")
-            plotData = false
+    private fun sendBroadcast() =
+        Intent(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
+            it.putExtra("boolean", true)
+            context?.sendBroadcast(it)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mSensorManager!!.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME)
-    }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        // Do something here if sensor accuracy changes.
-    }
 }
 
 // @AndroidEntryPoint
@@ -302,57 +232,4 @@ class GraphFragment : Fragment(), SensorEventListener {
 //
 //        return binding.root
 //    }
-//
-//    private fun setChart(chart: LineChart) {
-//        chart.apply {
-//            // disable description text
-//            description.isEnabled = false
-//
-//            // enable touch gestures
-//            setTouchEnabled(false)
-//
-//            // enable scaling and dragging
-//            isDragEnabled = false
-//            setScaleEnabled(true)
-//            setDrawGridBackground(true)
-//
-//            // if disabled, scaling can be done on x- and y-axis separately
-//            setPinchZoom(true)
-//
-//            // set an alternative background color
-//            setBackgroundColor(Color.WHITE)
-//            val lineData = LineData()
-//            lineData.setValueTextColor(Color.WHITE)
-//
-//            // add empty data
-//            data = lineData
-//
-//            // get the legend (only possible after setting data)
-//            val l = legend
-//
-//            // modify the legend ...
-//            l.form = Legend.LegendForm.LINE
-//            l.textColor = Color.BLACK
-//            val xl = xAxis
-//            xl.textColor = Color.WHITE
-//            xl.setDrawGridLines(true)
-//            xl.setAvoidFirstLastClipping(true)
-//            xl.isEnabled = true
-//            val leftAxis = axisLeft
-//            leftAxis.textColor = Color.BLACK
-//            leftAxis.setDrawGridLines(true)
-//            leftAxis.axisMaximum = MAX_Y_AXIS_VALUE
-//            leftAxis.axisMinimum = MIN_Y_AXIS_VALUE
-//            leftAxis.setDrawGridLines(true)
-//            val rightAxis = axisRight
-//            rightAxis.isEnabled = false
-//            setDrawBorders(true)
-//        }
-//    }
-//
-//    private fun sendBroadcast(boolean: Boolean) =
-//        Intent(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
-//            it.putExtra("boolean", boolean)
-//            context?.sendBroadcast(it)
-//        }
 // }
