@@ -72,13 +72,11 @@ class GraphFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if (thread != null) {
-            thread!!.interrupt()
-        }
+        thread?.interrupt()
     }
 
     override fun onDestroy() {
-        thread!!.interrupt()
+        thread?.interrupt()
         super.onDestroy()
     }
 
@@ -111,9 +109,7 @@ class GraphFragment : Fragment() {
     }
 
     private fun feedMultiple() {
-        if (thread != null) {
-            thread!!.interrupt()
-        }
+        thread?.interrupt()
         thread = Thread {
             while (true) {
                 plotData = true
@@ -124,7 +120,7 @@ class GraphFragment : Fragment() {
                 }
             }
         }
-        thread!!.start()
+        thread?.start()
     }
 
     private fun setChart(chart: LineChart) {
