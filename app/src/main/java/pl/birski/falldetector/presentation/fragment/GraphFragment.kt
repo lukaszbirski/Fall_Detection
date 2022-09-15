@@ -31,7 +31,6 @@ class GraphFragment : Fragment() {
     private val MIN_Y_AXIS_VALUE = -1.5F
     private val THREAD_SLEEP_TIME = 10L
 
-    private var mChart: LineChart? = null
     private var thread: Thread? = null
     private var plotData = true
 
@@ -44,23 +43,24 @@ class GraphFragment : Fragment() {
 
         binding.startBtn.setOnClickListener {
             viewModel.startService(requireContext())
+            sendBroadcast(false)
         }
 
         binding.stopBtn.setOnClickListener {
             viewModel.stopService(requireContext())
-            sendBroadcast()
+            sendBroadcast(true)
         }
 
-        viewModel.acceleration.observe(viewLifecycleOwner) {
-            if (plotData) {
-                addEntry(it)
-                plotData = false
+        viewModel.apply {
+            viewModel.acceleration.observe(viewLifecycleOwner) {
+                if (plotData) {
+                    addEntry(it)
+                    plotData = false
+                }
             }
+
+            viewModel.enableLocationService(requireContext())
         }
-
-        viewModel.enableLocationService(requireContext())
-
-        mChart = binding.chart
 
         setChart(binding.chart)
 
@@ -82,7 +82,7 @@ class GraphFragment : Fragment() {
     }
 
     private fun addEntry(acceleration: Acceleration) {
-        val data = mChart!!.data
+        val data = binding.chart.data
 
         data?.let {
             val xMeasurement =
@@ -103,15 +103,9 @@ class GraphFragment : Fragment() {
 
             data.notifyDataChanged()
 
-            // let the chart know it's data has changed
-            mChart!!.notifyDataSetChanged()
-
-            // limit the number of visible entries
-            mChart!!.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
-            // mChart.setVisibleYRange(30, AxisDependency.LEFT);
-
-            // move to the latest entry
-            mChart!!.moveViewToX(data.entryCount.toFloat())
+            binding.chart.notifyDataSetChanged()
+            binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
+            binding.chart.moveViewToX(data.entryCount.toFloat())
         }
     }
 
@@ -179,57 +173,9 @@ class GraphFragment : Fragment() {
         }
     }
 
-    private fun sendBroadcast() =
+    private fun sendBroadcast(value: Boolean) =
         Intent(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
-            it.putExtra("boolean", true)
+            it.putExtra("boolean", value)
             context?.sendBroadcast(it)
         }
 }
-
-// @AndroidEntryPoint
-// class GraphFragment : Fragment() {
-//
-//    private lateinit var binding: FragmentGraphBinding
-//
-//    lateinit var viewModel: GraphViewModel
-//
-//    private val VISIBLE_X_RANGE_MAX = 150F
-//    private val MAX_Y_AXIS_VALUE = 1.5F
-//    private val MIN_Y_AXIS_VALUE = -1.5F
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        viewModel = ViewModelProvider(requireActivity())[GraphViewModel::class.java]
-//
-//        binding = FragmentGraphBinding.inflate(inflater, container, false)
-//
-//        setChart(binding.chart)
-//
-//        binding.startBtn.setOnClickListener {
-//            viewModel.startService(binding.chart.lineData, requireContext())
-//            sendBroadcast(false)
-//        }
-//
-//        binding.stopBtn.setOnClickListener {
-//            viewModel.stopService(requireContext())
-//            sendBroadcast(true)
-//        }
-//
-//        viewModel.apply {
-//            enableLocationService(requireContext())
-//
-//            feedMultiple()
-//
-//            lineData.observe(viewLifecycleOwner) {
-//                binding.chart.notifyDataSetChanged()
-//                binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
-//                it?.entryCount?.toFloat()?.let { count -> binding.chart.moveViewToX(count) }
-//            }
-//        }
-//
-//        return binding.root
-//    }
-// }
