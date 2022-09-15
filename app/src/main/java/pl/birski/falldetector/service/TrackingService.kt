@@ -8,10 +8,10 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
+import dagger.hilt.android.AndroidEntryPoint
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.other.Constants.NOTIFICATION_ID
 import pl.birski.falldetector.service.enum.ServiceActions
-import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
 

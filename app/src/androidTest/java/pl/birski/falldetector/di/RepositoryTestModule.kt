@@ -1,12 +1,12 @@
 package pl.birski.falldetector.di
 
-import pl.birski.falldetector.fakes.MyFakeRepository
-import pl.birski.falldetector.model.util.ContactMapper
-import pl.birski.falldetector.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import pl.birski.falldetector.fakes.MyFakeRepository
+import pl.birski.falldetector.model.util.ContactMapper
+import pl.birski.falldetector.repository.Repository
 import javax.inject.Singleton
 
 @Module

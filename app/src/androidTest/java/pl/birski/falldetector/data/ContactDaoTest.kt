@@ -2,10 +2,6 @@ package pl.birski.falldetector.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
-import pl.birski.falldetector.data.dao.ContactDao
-import pl.birski.falldetector.data.model.ContactEntity
-import pl.birski.falldetector.model.Contact
-import pl.birski.falldetector.model.util.ContactMapper
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,6 +10,10 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import pl.birski.falldetector.data.dao.ContactDao
+import pl.birski.falldetector.data.model.ContactEntity
+import pl.birski.falldetector.model.Contact
+import pl.birski.falldetector.model.util.ContactMapper
 import javax.inject.Inject
 
 /**
