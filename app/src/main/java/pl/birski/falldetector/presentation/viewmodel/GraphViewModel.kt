@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -50,7 +51,29 @@ class GraphViewModel @Inject constructor(
             stopGraphUpdates()
         }
 
-    fun createSet(axis: DataSet, context: Context) =
+    fun handleLineData(data: LineData, acceleration: Acceleration, context: Context): LineData {
+        val xData = data.getDataSetByIndex(0) ?: createSet(DataSet.X_AXIS, context)
+            .also { data.addDataSet(it) }
+
+        val yData = data.getDataSetByIndex(1) ?: createSet(DataSet.Y_AXIS, context)
+            .also { data.addDataSet(it) }
+
+        val zData = data.getDataSetByIndex(2) ?: createSet(DataSet.Z_AXIS, context)
+            .also { data.addDataSet(it) }
+
+        data.addEntry(createEntry(acceleration, xData, DataSet.X_AXIS), 0)
+        data.addEntry(createEntry(acceleration, yData, DataSet.Y_AXIS), 1)
+        data.addEntry(createEntry(acceleration, zData, DataSet.Z_AXIS), 2)
+        return data
+    }
+
+    fun enableLocationService(context: Context) {
+        if (!locationTracker.locationEnabled()) {
+            locationTracker.showSettingsAlert(context)
+        }
+    }
+
+    private fun createSet(axis: DataSet, context: Context) =
         LineDataSet(null, selectDescription(axis, context))
             .also {
                 it.axisDependency = YAxis.AxisDependency.LEFT
@@ -63,7 +86,7 @@ class GraphViewModel @Inject constructor(
                 it.color = selectLineColor(axis)
             }
 
-    fun createEntry(
+    private fun createEntry(
         acceleration: Acceleration,
         measurement: ILineDataSet,
         dataSet: DataSet
@@ -71,12 +94,6 @@ class GraphViewModel @Inject constructor(
         measurement.entryCount.toFloat(),
         selectValue(acceleration, dataSet).toFloat()
     )
-
-    fun enableLocationService(context: Context) {
-        if (!locationTracker.locationEnabled()) {
-            locationTracker.showSettingsAlert(context)
-        }
-    }
 
     private suspend fun updateGraph() {
         stopGraphUpdates()

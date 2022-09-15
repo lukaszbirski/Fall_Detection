@@ -16,7 +16,6 @@ import pl.birski.falldetector.databinding.FragmentGraphBinding
 import pl.birski.falldetector.model.Acceleration
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
-import pl.birski.falldetector.service.enum.DataSet
 
 @AndroidEntryPoint
 class GraphFragment : Fragment() {
@@ -59,7 +58,6 @@ class GraphFragment : Fragment() {
                     plotData = false
                 }
             }
-
             viewModel.enableLocationService(requireContext())
         }
 
@@ -81,24 +79,10 @@ class GraphFragment : Fragment() {
     }
 
     private fun addEntry(acceleration: Acceleration) {
-        val data = binding.chart.data
+        var data = binding.chart.data
 
         data?.let {
-            val xMeasurement =
-                data.getDataSetByIndex(0) ?: viewModel.createSet(DataSet.X_AXIS, requireContext())
-                    .also { data.addDataSet(it) }
-
-            val yMeasurement =
-                data.getDataSetByIndex(1) ?: viewModel.createSet(DataSet.Y_AXIS, requireContext())
-                    .also { data.addDataSet(it) }
-
-            val zMeasurement =
-                data.getDataSetByIndex(2) ?: viewModel.createSet(DataSet.Z_AXIS, requireContext())
-                    .also { data.addDataSet(it) }
-
-            data.addEntry(viewModel.createEntry(acceleration, xMeasurement, DataSet.X_AXIS), 0)
-            data.addEntry(viewModel.createEntry(acceleration, yMeasurement, DataSet.Y_AXIS), 1)
-            data.addEntry(viewModel.createEntry(acceleration, zMeasurement, DataSet.Z_AXIS), 2)
+            data = viewModel.handleLineData(it, acceleration, requireContext())
 
             data.notifyDataChanged()
 
