@@ -1,6 +1,11 @@
 package pl.birski.falldetector.di
 
 import android.content.Context
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import pl.birski.falldetector.components.implementations.FallDetectorImpl
 import pl.birski.falldetector.components.implementations.FilterImpl
 import pl.birski.falldetector.components.implementations.SensorImpl
@@ -8,11 +13,6 @@ import pl.birski.falldetector.components.interfaces.FallDetector
 import pl.birski.falldetector.components.interfaces.Filter
 import pl.birski.falldetector.components.interfaces.Sensor
 import pl.birski.falldetector.other.PrefUtil
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module

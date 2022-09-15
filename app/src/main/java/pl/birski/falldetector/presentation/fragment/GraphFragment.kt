@@ -13,6 +13,7 @@ import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.LineData
 import dagger.hilt.android.AndroidEntryPoint
 import pl.birski.falldetector.databinding.FragmentGraphBinding
+import pl.birski.falldetector.model.Acceleration
 import pl.birski.falldetector.other.Constants
 import pl.birski.falldetector.presentation.viewmodel.GraphViewModel
 
@@ -26,6 +27,10 @@ class GraphFragment : Fragment() {
     private val VISIBLE_X_RANGE_MAX = 150F
     private val MAX_Y_AXIS_VALUE = 1.5F
     private val MIN_Y_AXIS_VALUE = -1.5F
+    private val THREAD_SLEEP_TIME = 10L
+
+    private var thread: Thread? = null
+    private var plotData = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,10 +41,8 @@ class GraphFragment : Fragment() {
 
         binding = FragmentGraphBinding.inflate(inflater, container, false)
 
-        setChart(binding.chart)
-
         binding.startBtn.setOnClickListener {
-            viewModel.startService(binding.chart.lineData, requireContext())
+            viewModel.startService(requireContext())
             sendBroadcast(false)
         }
 
@@ -49,18 +52,59 @@ class GraphFragment : Fragment() {
         }
 
         viewModel.apply {
-            enableLocationService(requireContext())
-
-            feedMultiple()
-
-            lineData.observe(viewLifecycleOwner) {
-                binding.chart.notifyDataSetChanged()
-                binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
-                it?.entryCount?.toFloat()?.let { count -> binding.chart.moveViewToX(count) }
+            viewModel.acceleration.observe(viewLifecycleOwner) {
+                if (plotData) {
+                    addEntry(it)
+                    plotData = false
+                }
             }
+            viewModel.enableLocationService(requireContext())
         }
 
+        setChart(binding.chart)
+
+        feedMultiple()
+
         return binding.root
+    }
+
+    override fun onPause() {
+        super.onPause()
+        thread?.interrupt()
+    }
+
+    override fun onDestroy() {
+        thread?.interrupt()
+        super.onDestroy()
+    }
+
+    private fun addEntry(acceleration: Acceleration) {
+        var data = binding.chart.data
+
+        data?.let {
+            data = viewModel.handleLineData(it, acceleration, requireContext())
+
+            data.notifyDataChanged()
+
+            binding.chart.notifyDataSetChanged()
+            binding.chart.setVisibleXRangeMaximum(VISIBLE_X_RANGE_MAX)
+            binding.chart.moveViewToX(data.entryCount.toFloat())
+        }
+    }
+
+    private fun feedMultiple() {
+        thread?.interrupt()
+        thread = Thread {
+            while (true) {
+                plotData = true
+                try {
+                    Thread.sleep(THREAD_SLEEP_TIME)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        thread?.start()
     }
 
     private fun setChart(chart: LineChart) {
@@ -110,9 +154,9 @@ class GraphFragment : Fragment() {
         }
     }
 
-    private fun sendBroadcast(boolean: Boolean) =
+    private fun sendBroadcast(value: Boolean) =
         Intent(Constants.CUSTOM_FALL_DETECTED_INTENT_INTERACTOR).also {
-            it.putExtra("boolean", boolean)
+            it.putExtra("boolean", value)
             context?.sendBroadcast(it)
         }
 }
