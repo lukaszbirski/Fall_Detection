@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.LineData
@@ -21,10 +21,9 @@ import pl.birski.falldetector.service.enum.DataSet
 @AndroidEntryPoint
 class GraphFragment : Fragment() {
 
-    private var _binding: FragmentGraphBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentGraphBinding
 
-    private val viewModel: GraphViewModel by viewModels()
+    lateinit var viewModel: GraphViewModel
 
     private val VISIBLE_X_RANGE_MAX = 150F
     private val MAX_Y_AXIS_VALUE = 1.5F
@@ -39,7 +38,9 @@ class GraphFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGraphBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity())[GraphViewModel::class.java]
+
+        binding = FragmentGraphBinding.inflate(inflater, container, false)
 
         binding.startBtn.setOnClickListener {
             viewModel.startService(requireContext())

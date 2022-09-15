@@ -2,12 +2,12 @@ package pl.birski.falldetector.di
 
 import android.content.Context
 import androidx.room.Room
-import pl.birski.falldetector.data.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
+import pl.birski.falldetector.data.AppDatabase
 import javax.inject.Singleton
 
 @Module
