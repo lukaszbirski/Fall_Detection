@@ -16,6 +16,7 @@
     <!--    Bottom navigation ends here-->
 
     <!--    Home Fragment starts here-->
+    <string name="home_fragment_title_text">Mobile application for Android platform enabling fall detection</string>
     <string name="home_fragment_author_text" translatable="false">Łukasz Birski</string>
     <string name="home_fragment_supervisor_name_text" translatable="false">dr hab. inż. Marcin Kołodziej</string>
     <string name="home_fragment_city_date_text">Warsaw 2022</string>

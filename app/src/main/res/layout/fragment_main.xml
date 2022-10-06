@@ -92,8 +92,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="40dp"
+                android:layout_marginHorizontal="20dp"
                 android:gravity="center"
-                android:text="TYTUL PRACY"
+                android:textStyle="bold"
+                android:text="@string/home_fragment_title_text"
                 android:textSize="22sp" />
 
             <TextView
