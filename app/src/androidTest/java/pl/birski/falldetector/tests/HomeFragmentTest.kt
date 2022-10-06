@@ -20,6 +20,7 @@ import pl.birski.falldetector.presentation.fragment.HomeFragment
 
 /**
  * End-to-End tests of [HomeFragment].
+ * for proper tests running needs to allow permissions first
  */
 @RunWith(AndroidJUnit4::class)
 @MediumTest
@@ -44,7 +45,7 @@ class HomeFragmentTest {
         onView(withId(R.id.logoImageVIew)).check(matches(isDisplayed()))
         onView(withText(R.string.home_fragment_thesis_text)).check(matches(isDisplayed()))
         onView(withText(R.string.home_fragment_course_text)).check(matches(isDisplayed()))
-        onView(withText("TYTUL PRACY")).check(matches(isDisplayed()))
+        onView(withText(R.string.home_fragment_title_text)).check(matches(isDisplayed()))
         onView(withText(R.string.home_fragment_author_text)).check(matches(isDisplayed()))
         onView(withText(R.string.home_fragment_supervisor_text)).check(matches(isDisplayed()))
         onView(withText(R.string.home_fragment_supervisor_name_text)).check(matches(isDisplayed()))

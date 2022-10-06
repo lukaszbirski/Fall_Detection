@@ -16,6 +16,7 @@
     <!--    Bottom navigation ends here-->
 
     <!--    Home Fragment starts here-->
+    <string name="home_fragment_title_text">Aplikacja mobilna na platformę Android umożliwiająca detekcję upadku</string>
     <string name="home_fragment_city_date_text">Warszawa 2022</string>
     <string name="home_fragment_supervisor_text">promotor</string>
     <string name="home_fragment_thesis_text">Aplikacja powstała w ramach \npracy dyplomowej inżynierskiej</string>
