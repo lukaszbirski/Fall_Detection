@@ -17,9 +17,9 @@
 
     <!--    Home Fragment starts here-->
     <string name="home_fragment_title_text">Aplikacja mobilna na platformę Android umożliwiająca detekcję upadku</string>
-    <string name="home_fragment_city_date_text">Warszawa 2022</string>
+    <string name="home_fragment_city_date_text">Warszawa 2023</string>
     <string name="home_fragment_supervisor_text">promotor</string>
-    <string name="home_fragment_thesis_text">Aplikacja powstała w ramach \npracy dyplomowej inżynierskiej</string>
+    <string name="home_fragment_thesis_text">Aplikacja powstała w ramach pracy dyplomowej inżynierskiej</string>
     <string name="home_fragment_course_text">na kierunku Informatyka w \nspecjalności Informatyka stosowana</string>
     <string name="home_fragment_uni_text">Politechnika Warszawska</string>
     <string name="home_fragment_faculty_text">WYDZIAŁ ELEKTRYCZNY</string>

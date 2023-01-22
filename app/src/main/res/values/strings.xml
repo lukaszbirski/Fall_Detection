@@ -19,9 +19,9 @@
     <string name="home_fragment_title_text">Mobile application for Android platform enabling fall detection</string>
     <string name="home_fragment_author_text" translatable="false">Łukasz Birski</string>
     <string name="home_fragment_supervisor_name_text" translatable="false">dr hab. inż. Marcin Kołodziej</string>
-    <string name="home_fragment_city_date_text">Warsaw 2022</string>
+    <string name="home_fragment_city_date_text">Warsaw 2023</string>
     <string name="home_fragment_supervisor_text">thesis supervisor</string>
-    <string name="home_fragment_thesis_text">This application was developed as part of \nBachelor`s diploma thesis</string>
+    <string name="home_fragment_thesis_text">This application was developed as part of Bachelor`s diploma thesis</string>
     <string name="home_fragment_course_text">in the field of study Computer Science and \nspecialisation Applied Computer Science</string>
     <string name="home_fragment_uni_text">Warsaw University of Technology</string>
     <string name="home_fragment_faculty_text">FACULTY OF ELECTRICAL ENGINEERING</string>
